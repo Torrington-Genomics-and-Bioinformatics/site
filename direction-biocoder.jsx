@@ -246,7 +246,8 @@ const FIELDS = ['Biomedical and Biotechnology', 'Plant Science', 'Immunology', '
 const TIERS = [
   { v: 't1', duration: '6 weeks', label: 'Tier 1 (Bridge Programme included)', hint: 'Applied Bioinformatics Practice', price: 'LKR 48,000' },
   { v: 't2', duration: '3 months', label: 'Tier 1 + 2', hint: 'Multi-omic Bioinformatics & NGS', price: 'LKR 125,000' },
-  { v: 'full', duration: '6 months', label: 'Full pathway', hint: 'Through the Tier 3 research capstone', price: 'LKR 220,000' }
+  { v: 'full', duration: '6 months', label: 'Full pathway', hint: 'Through the Tier 3 research capstone', price: 'LKR 220,000' },
+  { v: 'custom', duration: 'Custom', label: 'Custom track', hint: 'Tell us what you need', price: '' }
 ];
 const TRACKS = ['Genomics', 'Transcriptomics', 'Structural bioinformatics', 'Cloud pipeline engineering', 'Computational synthetic biology', 'Undecided'];
 const FEES = [
@@ -935,7 +936,7 @@ function BCApply() {
   const [form, setForm] = React.useState({
     fullName: '', email: '', phone: '', city: '', role: '',
     institution: '', degreeLevel: '', degreeLevelOther: '', fieldOfStudy: '', fieldOfStudyOther: '', year: '', computing: '', hasData: '', dataDetail: '',
-    tier: '', track: '', statement: '', refName: '', refEmail: '', fee: 'full', feeDetail: ''
+    tier: '', track: '', customNeed: '', statement: '', refName: '', refEmail: '', fee: 'full', feeDetail: ''
   });
   const [formError, setFormError] = React.useState('');
   const [declared, setDeclared] = React.useState(false);
@@ -958,6 +959,7 @@ function BCApply() {
       if (!form.hasData) miss.push('whether you have your own data');
     } else if (step === 3) {
       if (!form.tier) miss.push('exit point');
+      if (form.tier === 'custom' && (form.customNeed.trim() ? form.customNeed.trim().split(/\s+/).length : 0) < 10) miss.push('what you need for the custom track (at least 10 words)');
       if (!form.fee) miss.push('whether you are applying for a fee waiver');
       if (form.fee === 'waiver' && (form.feeDetail.trim() ? form.feeDetail.trim().split(/\s+/).length : 0) < 15) miss.push('your circumstances (at least 15 words)');
     }
@@ -1015,8 +1017,9 @@ function BCApply() {
     ['Year / graduation', form.year || '—'],
     ['Computing', (COMPUTING.find((x) => x.v === form.computing) || {}).label || '—'],
     ['Own data', ((DATA_OPTS.find((x) => x.v === form.hasData) || {}).label || '—') + (form.dataDetail ? ' — ' + form.dataDetail : '')],
-    ['Applying for', tierInfo ? tierInfo.label + ' (' + tierInfo.duration + ') · ' + tierInfo.price : '—'],
+    ['Applying for', tierInfo ? tierInfo.label + ' (' + tierInfo.duration + ')' + (tierInfo.price ? ' · ' + tierInfo.price : '') : '—'],
     ['Tier 3 track', form.tier === 'full' ? form.track || 'Undecided' : 'Not applicable'],
+    ['Custom track details', form.tier === 'custom' ? form.customNeed || '—' : 'Not applicable'],
     ['Statement', form.statement || '—'],
     ['Referee', form.refName ? form.refName + (form.refEmail ? ' · ' + form.refEmail : '') : 'None given'],
     ['Fee waiver', ((FEES.find((x) => x.v === form.fee) || {}).label || '—') + (form.feeDetail ? ' — ' + form.feeDetail : '')]
@@ -1167,6 +1170,11 @@ function BCApply() {
                 </div>
                 <p style={{ margin: 0, fontSize: 12, lineHeight: 1.6, color: BC_DIM }}>Entry to Tier 3 is by competitive selection and places are limited by mentor capacity. This is a preference, not a commitment.</p>
               </div>}
+              {form.tier === 'custom' &&
+              <label style={label}><span style={labelCap}>What do you need</span>
+                <textarea rows={5} value={form.customNeed} onChange={(e) => setField('customNeed', e.target.value)} placeholder="Tell us what you're looking for — focus area, duration, format, and anything about your situation that a fixed tier doesn't cover." style={taStyle} />
+                <span style={cs('font-family:"JetBrains Mono",monospace; font-size:10px; color:' + BC_DIM)}>{form.customNeed.trim() ? form.customNeed.trim().split(/\s+/).length : 0} / 10 words minimum</span>
+              </label>}
               <div style={{ display: 'grid', gap: 10 }}>
                 <span style={labelCap}>Are you applying for a fee waiver</span>
                 <div style={cs('display:grid; gap:1px; background:' + BC_LINE + '; border:1px solid ' + BC_LINE + '; border-radius:14px; overflow:hidden')}>
