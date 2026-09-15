@@ -1,5 +1,0 @@
----
-deployment:
-  tasks:
-    - export DEPLOYPATH=/home/torringt/public_html/
-    - /bin/cp -R /home/torringt/repositories/site/dist/. $DEPLOYPATH
