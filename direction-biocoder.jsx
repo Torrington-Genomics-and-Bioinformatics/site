@@ -515,7 +515,7 @@ function BCNav() {
         <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:' + BC_DIM + '; padding:5px 11px; border:1px solid ' + BC_LINE + '; border-radius:999px')}>Bio-Coder</span>
         <div style={{ flex: 1 }} />
         <div className="bc-nav-links" style={{ gap: 22, flexWrap: 'wrap' }}>
-          <a href="https://torrington-gb.com/" style={cs('font-size:13px; color:' + BC_INK2)}>Main site</a>
+          <a href="https://torrington-gb.com/" style={cs('font-size:13px; color:' + BC_INK2)}>Home</a>
           {items.map(([label, id]) => (
             <span key={id} onClick={() => goTo(id)} style={cs('font-size:13px; cursor:pointer; color:' + BC_INK2)}>{label}</span>
           ))}
@@ -536,7 +536,7 @@ function BCNav() {
       </div>
       {open &&
       <div style={cs('border-top:1px solid ' + BC_LINE + '; padding:10px clamp(20px,5vw,56px) 22px; display:flex; flex-direction:column; gap:2px; background:' + BC_PAPER)}>
-        <a href="https://torrington-gb.com/" style={cs('padding:13px 4px; border-bottom:1px solid ' + BC_LINE + '; font-size:15px; color:' + BC_INK + '; font-weight:500')}>Main site</a>
+        <a href="https://torrington-gb.com/" style={cs('padding:13px 4px; border-bottom:1px solid ' + BC_LINE + '; font-size:15px; color:' + BC_INK + '; font-weight:500')}>Home</a>
         {items.map(([label, id]) => (
           <span key={id} onClick={() => goTo(id)} style={cs('padding:13px 4px; border-bottom:1px solid ' + BC_LINE + '; font-size:15px; color:' + BC_INK + '; font-weight:500; cursor:pointer')}>{label}</span>
         ))}
