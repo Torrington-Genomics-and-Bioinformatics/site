@@ -31,7 +31,7 @@ const BC_PAPER = '#ffffff';
 const BC_PAPER2 = '#f6f9fb';
 const BC_FOREST = '#0d201e'; // dark panel background used for hero/pathway/footer
 
-const INTAKE_MONTH = ''; // e.g. 'January 2027' — blank falls back to a generic label
+const INTAKE_MONTH = 'November'; // e.g. 'January 2027' — blank falls back to a generic label
 
 // Contact form endpoint — sign up at https://formspree.io, create a form for applications,
 // and replace YOUR_FORM_ID below with the ID from its endpoint URL.
