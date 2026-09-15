@@ -562,12 +562,19 @@ function BCHero() {
         <style>{`@keyframes bcAuraBob { 0%,100% { transform: translate(0,0); } 50% { transform: translate(0,-22px); } }`}</style>
         <div style={cs('position:absolute; top:-40px; right:-60px; width:520px; height:520px; border-radius:999px; background:radial-gradient(circle, rgba(44,116,102,0.13) 0%, rgba(44,116,102,0) 70%); pointer-events:none; animation:bcAuraBob 11s ease-in-out infinite')} />
         <div style={cs('position:relative; display:flex; flex-direction:column; gap:26px; max-width:860px')}>
-          <div style={cs('display:inline-flex; flex-wrap:wrap; align-items:center; gap:10px; padding:6px; border:1px solid rgba(255,255,255,0.14); border-radius:999px; background:rgba(255,255,255,0.08); backdrop-filter:blur(8px)')}>
+          <style>{`
+            .bc-hero-badge { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 10px; padding: 6px; border: 1px solid rgba(255,255,255,0.14); border-radius: 999px; background: rgba(255,255,255,0.08); backdrop-filter: blur(8px); }
+            @media (max-width: 520px) {
+              .bc-hero-badge { flex-direction: column; align-items: flex-start; border-radius: 16px; padding: 10px 14px; gap: 8px; }
+              .bc-hero-badge .bc-hero-badge-sub { padding-right: 0; padding-left: 1px; }
+            }
+          `}</style>
+          <div className="bc-hero-badge">
             <span style={cs('display:inline-flex; align-items:center; gap:7px; padding:7px 15px; border-radius:999px; background:' + BC_GRAD + '; color:#fff; font-family:"JetBrains Mono",monospace; font-size:12px; font-weight:700; letter-spacing:1.6px; text-transform:uppercase; white-space:nowrap')}>
               <span style={cs('width:6px; height:6px; border-radius:999px; background:#fff')} />
               {intakeLabel}
             </span>
-            <span style={cs('padding-right:12px; font-size:12px; color:rgba(255,255,255,0.68)')}>Reviewed individually, by invitation</span>
+            <span className="bc-hero-badge-sub" style={cs('padding-right:12px; font-size:12px; color:rgba(255,255,255,0.68)')}>Reviewed individually, by invitation</span>
           </div>
           <h1 style={cs('margin:0; font-family:Newsreader,serif; font-weight:300; font-size:clamp(46px,8vw,104px); line-height:0.98; letter-spacing:-3.5px; color:#fff')}>
             An industrial traineeship in bioinformatics, <em style={{ fontStyle: 'italic', background: BC_GRAD, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>built for Sri Lankan scientists</em>
@@ -1169,7 +1176,8 @@ function BCApply() {
                     .bc-tier-row { display: grid !important; grid-template-columns: 70px minmax(0,1.25fr) minmax(0,1fr) 132px; gap: 16px; align-items: center; }
                     @media (max-width: 560px) {
                       .bc-tier-row { grid-template-columns: 1fr auto; row-gap: 4px; }
-                      .bc-tier-row .bc-tier-hint { grid-column: 1 / -1; }
+                      .bc-tier-row .bc-tier-hint, .bc-tier-row .bc-tier-price { grid-column: 1 / -1; }
+                      .bc-tier-row .bc-tier-price { text-align: right; }
                     }
                   `}</style>
                   {TIERS.map((o) => (
@@ -1177,7 +1185,7 @@ function BCApply() {
                       <span style={{ fontFamily: '"JetBrains Mono",monospace', fontSize: 10.5, color: '#2c7466', minWidth: 62, textAlign: 'left' }}>{o.duration}</span>
                       <span style={{ minWidth: 0, textAlign: 'left', fontSize: 13.5, fontWeight: 600 }}>{o.label}</span>
                       <span className="bc-tier-hint" style={{ minWidth: 0, fontSize: 12, textAlign: 'left', color: BC_DIM }}>{o.hint}</span>
-                      <span style={{ fontFamily: '"JetBrains Mono",monospace', fontSize: 12.5, fontWeight: 700, color: BC_INK, textAlign: 'right', whiteSpace: 'nowrap' }}>{o.price}</span>
+                      <span className="bc-tier-price" style={{ fontFamily: '"JetBrains Mono",monospace', fontSize: 12.5, fontWeight: 700, color: BC_INK, textAlign: 'right', whiteSpace: 'nowrap' }}>{o.price}</span>
                     </button>
                   ))}
                 </div>
