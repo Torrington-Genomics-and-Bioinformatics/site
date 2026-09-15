@@ -372,11 +372,11 @@ function LumenMission() {
           fontFamily: 'Newsreader, serif', fontWeight: 300,
           fontSize: 'clamp(19px, 3vw, 28px)', lineHeight: 1.35, letterSpacing: -0.5, color: LUM_INK
         }}>
-          The practical case is straightforward. A sample sent abroad takes weeks — the interpretation arrives without the clinician in the room, and any follow-up question has a time-zone in the way. TGB removes that delay: samples are sequenced, annotated, and reported{' '}
+          The practical case is straightforward. A sample sent abroad takes weeks. The interpretation arrives without the clinician in the room, and any follow-up question has a time-zone in the way. TGB removes that delay: samples are sequenced, annotated, and reported{' '}
           <span style={{
             fontStyle: 'italic',
             background: LUM_GRAD, WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'
-          }}>by scientists who know the patient population.</span> Same reference databases. Same ACMG standards. Faster answers — and a scientist who picks up the phone.
+          }}>by scientists who know the patient population.</span> Same reference databases. Same ACMG standards. Faster answers, with a scientist who picks up the phone.
         </div>
       </div>
     </div>);
@@ -640,7 +640,7 @@ function LumenServices() {
           </h2>
         </div>
         <div style={{ fontSize: 14, color: LUM_DIM, maxWidth: 260, lineHeight: 1.55 }}>
-          Reagents on the bench, reports on the desk, scientists in training, and an integrated enterprise architecture behind it all — under one roof.
+          Reagents on the bench, reports on the desk, scientists in training, and an integrated enterprise architecture behind it all, under one roof.
         </div>
       </div>
 
@@ -708,7 +708,7 @@ function LumenCompliance() {
           fontFamily: 'Newsreader, serif', fontWeight: 300, fontSize: 'clamp(32px, 5.5vw, 52px)', color: LUM_INK,
           margin: 0, letterSpacing: -1.4, lineHeight: 1.08, maxWidth: 840
         }}>
-          Enterprise-grade regulatory architecture — <span style={{ fontStyle: 'italic' }}>built to national and clinical standards.</span>
+          Enterprise-grade regulatory architecture. <span style={{ fontStyle: 'italic' }}>Built to national and clinical standards.</span>
         </h2>
       </div>
 
@@ -798,7 +798,7 @@ function LumenPlatform() {
           One pipeline, <span style={{ fontStyle: 'italic' }}>seven moves.</span>
         </h2>
         <p style={{ fontSize: 16, color: LUM_DIM, lineHeight: 1.6, margin: '20px 0 0', maxWidth: 580 }}>
-          Every sample we touch — exome, panel, mitochondrial, RNA-seq — runs the same instrumented path on Sri Lankan soil. Stage three is the only step that varies by chemistry.
+          Every sample we touch (exome, panel, mitochondrial, RNA-seq) runs the same instrumented path on Sri Lankan soil. Stage three is the only step that varies by chemistry.
         </p>
       </div>
 
@@ -1060,9 +1060,9 @@ function LumenClients() {
 // ---- News / milestones ----
 function LumenNews() {
   const items = [
-  { date: 'Aug 2024', tag: 'Partnership', title: 'TGB appointed authorized partner for Centogene', body: 'Internationally validated rare-disease genomic testing — 6,500+ conditions — now accessible to Sri Lankan patients without overseas sample shipment.' },
+  { date: 'Aug 2024', tag: 'Partnership', title: 'TGB appointed authorized partner for Centogene', body: 'Internationally validated rare-disease genomic testing (6,500+ conditions) now accessible to Sri Lankan patients without overseas sample shipment.' },
   { date: 'Mar 2024', tag: 'Distribution', title: 'Gen2Me distributorship added to the portfolio', body: 'A second international reagents partnership, expanding the local catalog and reflecting TGB\'s growing regional relevance in South Asia.' },
-  { date: 'Jun 2023', tag: 'Consultation', title: 'Full NGS infrastructure setup at Wish Fertility', body: 'TGB designed and commissioned the only in-house NGS platform at a private Sri Lankan hospital — from platform selection to workflow validation.' },
+  { date: 'Jun 2023', tag: 'Consultation', title: 'Full NGS infrastructure setup at Wish Fertility', body: 'TGB designed and commissioned the only in-house NGS platform at a private Sri Lankan hospital: from platform selection to workflow validation.' },
   { date: 'Jan 2022', tag: 'Distribution', title: 'Celemics official distributor for Sri Lanka', body: 'TGB becomes the in-country reagents partner for Celemics; reagents now supplied to Apeksha Hospital and the University of Colombo.' }];
 
   return (
@@ -1117,7 +1117,7 @@ function LumenTeam() {
       initials: 'NN',
       name: 'Nilaksha Freeson Neththikumara',
       role: 'Co-Founder, CEO & Director',
-      bio: 'MPhil in Bioinformatics, DBA. National Bioinformatics Consultant — Apeksha Hospital. Founder of BiGIN-SL. The operational and scientific backbone of TGB.'
+      bio: 'MPhil in Bioinformatics, DBA. National Bioinformatics Consultant, Apeksha Hospital. Founder of BiGIN-SL. The operational and scientific backbone of TGB.'
     },
     {
       initials: 'VD',
@@ -1233,7 +1233,7 @@ function LumenContact() {
         setMessage('');
       })
       .catch(() => {
-        setError("Something went wrong sending your message — please email us directly at info@torrington-gb.com.");
+        setError("Something went wrong sending your message. Please email us directly at info@torrington-gb.com.");
       })
       .finally(() => setSubmitting(false));
   };
@@ -1290,7 +1290,7 @@ function LumenContact() {
               style={{ ...fieldStyle, borderRadius: 999 }}
             />
             <input
-              type="text" required placeholder="Subject — what's this about?"
+              type="text" required placeholder="Subject: what's this about?"
               value={subject} onChange={(e) => setSubject(e.target.value)}
               style={{ ...fieldStyle, borderRadius: 999 }}
             />
@@ -1369,7 +1369,7 @@ function LumenContact() {
           </div>
           <h3 style={{ fontFamily: 'Newsreader, serif', fontWeight: 400, fontSize: 26, margin: '0 0 10px', letterSpacing: -0.5 }}>Message sent</h3>
           <p style={{ fontSize: 14.5, color: LUM_DIM, lineHeight: 1.6, margin: '0 0 28px' }}>
-            Thanks for reaching out — we'll get back to you within one working day.
+            Thanks for reaching out. We'll get back to you within one working day.
           </p>
           <button onClick={() => setSent(false)} style={{
             padding: '13px 28px', background: LUM_GRAD, color: '#fff', border: 'none', borderRadius: 999,

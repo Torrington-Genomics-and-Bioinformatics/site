@@ -57,7 +57,7 @@ const BRIDGE = [
       { group: 'Clinical interpretation principles', items: t(['Pathogenicity spectrum', 'ACMG framework', 'Variant annotation and prioritisation']) }
     ] },
   { code: 'B3', title: 'Biological Databases and Genome Resources',
-    blurb: 'How to find and read the major resources everyone cites — and how to identify the provenance of an annotation before you trust it.',
+    blurb: 'How to find and read the major resources everyone cites, and how to identify the provenance of an annotation before you trust it.',
     topics: [
       { group: 'NCBI ecosystem', items: t(['GenBank, RefSeq, dbSNP, dbVar, ClinVar, PubMed']) },
       { group: 'Genome browsers', items: t(['UCSC Genome Browser, Ensembl, IGV']) },
@@ -77,7 +77,7 @@ const BRIDGE = [
       { group: 'Principles', items: t(['Molecular evolution principles', 'Multiple sequence alignment (conceptual overview)', 'Phylogenetic tree structure and interpretation', 'Distance-based vs character-based methods']) }
     ] },
   { code: 'B6', title: 'In-Silico Molecular Assay Design, Validation and Synthetic Biology',
-    blurb: 'Designing and checking assays before anyone touches a bench — primers, chromatograms, vectors, and regulatory parts as designable components.',
+    blurb: 'Designing and checking assays before anyone touches a bench: primers, chromatograms, vectors, and regulatory parts as designable components.',
     topics: [
       { group: 'Primer design and validation', items: t(['Thermodynamics (Tm, GC content)', 'Secondary structure considerations', 'Primer3 and Primer-BLAST', 'Specificity analysis', 'In-silico PCR', 'Primer drop-out due to polymorphisms']) },
       { group: 'Sanger chromatogram interpretation', items: t(['Heterozygous peak detection', 'Troubleshooting artefacts', 'Forward–reverse consensus building']) },
@@ -89,7 +89,7 @@ const BRIDGE = [
     blurb: 'What comes off a sequencer, in what shape, and how to judge whether it is fit to use.',
     topics: [
       { group: 'Overview of next-generation sequencing', items: t(['Transition from Sanger to NGS', 'Short-read vs long-read concepts', 'Depth and coverage', 'From raw reads to variant identification']) },
-      { group: 'Core genomic data formats', items: t(['FASTA, FASTQ, BAM, VCF — what each represents biologically and how they relate within a sequencing workflow']) },
+      { group: 'Core genomic data formats', items: t(['FASTA, FASTQ, BAM, VCF: what each represents biologically and how they relate within a sequencing workflow']) },
       { group: 'Quality assessment and filtering (conceptual)', items: t(['Phred quality scores', 'Read quality and mapping quality', 'Depth of coverage', 'Principles of variant filtering']) },
       { group: 'Computational methods in sequencing workflows', items: t(['Machine-learning basecalling and its effect on data quality', 'Learning-based variant callers alongside conventional statistical callers']) },
       { group: 'Introduction to Galaxy', items: t(['Web-based bioinformatics environment', 'Overview of commonly used tools', 'Pipeline execution in Galaxy']) }
@@ -122,7 +122,7 @@ const T1 = [
     topics: [
       { group: 'Topics', items: t(['Automation with Bash scripting: processing multiple samples in a single run', 'Python for bio-data: scripting, parsing genomic files, manipulating data tables (filtering VCF or CSV)', 'Executing simplified pipelines: a start-to-finish analysis from raw data to QC report', 'Version control with Git: tracking changes and collaborating without losing work']) }
     ],
-    deliverable: 'A version-controlled GitHub repository of clean, documented code — the portfolio artefact assessed at 20% of the applied stream.' }
+    deliverable: 'A version-controlled GitHub repository of clean, documented code: the portfolio artefact assessed at 20% of the applied stream.' }
 ];
 
 const T2 = [
@@ -134,7 +134,7 @@ const T2 = [
     topics: [ { group: 'Topics', items: t(['The DNA analysis roadmap: standard workflows for WGS, WES and targeted panels', 'Sequencing quality metrics: reading alignment and coverage metrics to confirm data reliability', 'Pipeline automation: automated workflows rather than running each step manually', 'GATK best-practice analysis on server and cloud infrastructure', 'Separating real variants from artefacts: hard filtering, VQSR and the limits of each']) } ] },
   { code: '07', title: 'Somatic Variant Calling and Precision Oncology', meta: 'Weeks 8–9',
     blurb: 'Why somatic calling is not germline calling with different flags, and how clinical annotation actually works.',
-    topics: [ { group: 'Topics', items: t(['Tumour biology for the analyst: clonality, tumour purity, ploidy', 'Tumour-normal and tumour-only workflows: matched and unmatched designs, panel of normals', 'Somatic callers in practice: running and comparing established callers', 'Copy number and structural variants in tumours', 'Clinical annotation: COSMIC, OncoKB, CIViC and the AMP/ASCO/CAP tier system', 'Tumour mutational burden and signature analysis — concepts, calculation and pitfalls']) } ] },
+    topics: [ { group: 'Topics', items: t(['Tumour biology for the analyst: clonality, tumour purity, ploidy', 'Tumour-normal and tumour-only workflows: matched and unmatched designs, panel of normals', 'Somatic callers in practice: running and comparing established callers', 'Copy number and structural variants in tumours', 'Clinical annotation: COSMIC, OncoKB, CIViC and the AMP/ASCO/CAP tier system', 'Tumour mutational burden and signature analysis: concepts, calculation and pitfalls']) } ] },
   { code: '08', title: 'Transcriptomics and Statistical Interpretation in R', meta: 'Week 10',
     blurb: 'From raw reads to an interpreted, defensible differential expression result with journal-ready figures.',
     topics: [ { group: 'Topics', items: t(['RNA-seq workflows: from raw reads to transcript quantification', 'Differential gene expression with R/Bioconductor', 'Statistical validation: p-values, fold changes and false discovery rate at scale', 'Publication-ready visualisation: volcano plots, heatmaps and PCA plots in R']) } ] },
@@ -144,7 +144,7 @@ const T2 = [
   { code: '10', title: 'Workflow Orchestration and Containerised Pipelines', meta: 'Week 12',
     blurb: 'Where Bash stops scaling, and what replaces it in production.',
     topics: [ { group: 'Topics', items: t(['Why workflow managers exist: the limits of Bash scripting at scale', 'Nextflow and Snakemake: processes, channels, rules and dependency resolution', 'Configuration and portability: execution profiles for local, server and cloud back-ends', 'Containerised execution: Docker and Singularity/Apptainer integration', 'Using and adapting nf-core pipelines', 'Resumability, logging and pipeline failure recovery']) } ],
-    deliverable: 'A containerised workflow-manager pipeline (Nextflow or Snakemake) that executes reproducibly on a server — the pipeline build assignment, 35% of the tier.' }
+    deliverable: 'A containerised workflow-manager pipeline (Nextflow or Snakemake) that executes reproducibly on a server: the pipeline build assignment, 35% of the tier.' }
 ];
 
 const T3 = [
@@ -152,14 +152,14 @@ const T3 = [
     blurb: 'Specialisation and methodological rigour. You choose a mentored track here; the five track specifications follow below.',
     topics: [
       { group: 'Topics', items: t(['Systematic literature review: formal frameworks for identifying knowledge gaps and synthesising research', 'Bioinformatics benchmarking: objectively comparing tools (for example DeepVariant vs GATK) on accuracy, sensitivity and computational cost', 'Validation with gold-standard data: curated sets such as Genome in a Bottle (GIAB) to test pipeline reliability and precision']) },
-      { group: 'How the tracks work', items: t(['Each track specification describes the typical shape of a project, not a fixed syllabus', 'In the first weeks you and your mentor agree a project definition — research question, data, methods in scope, deliverable, and what completion looks like', 'If you bring your own research question or dataset, the project is built around it']) }
+      { group: 'How the tracks work', items: t(['Each track specification describes the typical shape of a project, not a fixed syllabus', 'In the first weeks you and your mentor agree a project definition: research question, data, methods in scope, deliverable, and what completion looks like', 'If you bring your own research question or dataset, the project is built around it']) }
     ] },
   { code: 'T1', title: 'Genomics: Advanced Germline and Somatic Variant Analysis', meta: 'Mentored track',
     blurb: 'From running an established pipeline to evaluating and adapting one against a specific dataset, with attention to the edge cases a standard pipeline handles poorly.',
     topics: [
       { group: 'Topics drawn on, as the project requires', items: t(['Pipeline evaluation: comparing callers on the same dataset against GIAB or an equivalent truth set', 'Difficult regions and variant classes: low-complexity regions, segmental duplications, CNV and structural variants', 'Advanced filtering and prioritisation: population frequency, in-silico predictors, conservation and structural evidence in one framework', 'Cohort-level analysis: joint genotyping, case-control comparison and basic burden testing', 'Clinical and research reporting: distinguishing pipeline output from clinical interpretation']) }
     ],
-    deliverable: "A variant analysis report on the agreed dataset — usually pipeline justification, prioritised and classified variants with supporting evidence, and a discussion of the pipeline's limitations on that data." },
+    deliverable: "A variant analysis report on the agreed dataset: usually pipeline justification, prioritised and classified variants with supporting evidence, and a discussion of the pipeline's limitations on that data." },
   { code: 'T2', title: 'Transcriptomics: RNA-seq Modelling and Single-Cell Sequencing', meta: 'Mentored track',
     blurb: 'Independent statistical analysis of expression data, plus an introduction to single-cell methods.',
     topics: [
@@ -169,21 +169,21 @@ const T3 = [
   { code: 'T3', title: 'Structural Bioinformatics: Protein Modelling and Structure-Based Prediction', meta: 'Mentored track',
     blurb: 'Structure prediction and molecular modelling applied to variant interpretation.',
     topics: [
-      { group: 'Topics drawn on, as the project requires', items: t(['Protein structure prediction: AlphaFold and related tools, confidence metrics (pLDDT, PAE) and their proper interpretation', 'Variant effect on structure: stability prediction (FoldX, DynaMut2 or equivalent) and interaction-interface effects', 'Molecular dynamics simulation: setup, run parameters, and interpretation of trajectory data', 'Comparative structural analysis: cross-checking predictions across tools and the known failure modes of each', 'Structure-based evidence in variant classification — where it fits the ACMG framework, and its limits']) }
+      { group: 'Topics drawn on, as the project requires', items: t(['Protein structure prediction: AlphaFold and related tools, confidence metrics (pLDDT, PAE) and their proper interpretation', 'Variant effect on structure: stability prediction (FoldX, DynaMut2 or equivalent) and interaction-interface effects', 'Molecular dynamics simulation: setup, run parameters, and interpretation of trajectory data', 'Comparative structural analysis: cross-checking predictions across tools and the known failure modes of each', 'Structure-based evidence in variant classification: where it fits the ACMG framework, and its limits']) }
     ],
-    deliverable: 'A structural evidence report on the agreed variant or protein — the modelled structure, stability and interaction analysis, a molecular dynamics component where warranted, and a statement of the strength and limits of the evidence.' },
+    deliverable: 'A structural evidence report on the agreed variant or protein: the modelled structure, stability and interaction analysis, a molecular dynamics component where warranted, and a statement of the strength and limits of the evidence.' },
   { code: 'T4', title: 'Cloud-Based Pipeline Engineering: Scalable Architectures', meta: 'Mentored track',
     blurb: 'Workflow orchestration taken into cloud-native, production-scale pipeline design.',
     topics: [
       { group: 'Topics drawn on, as the project requires', items: t(['Cloud fundamentals for bioinformatics: compute, storage and networking at genomic scale', 'Portable pipeline configuration: execution profiles, resource requests, writing once for multiple back-ends', 'Cost and resource management: estimating and controlling spend on large workloads', 'Data handling and access control in the cloud: encryption, access policy, and the extra care genomic data requires', 'Scaling and parallelisation, and the failure modes unique to distributed execution', 'Deployment and handover documentation']) }
     ],
-    deliverable: 'A deployed, documented pipeline — usually targeting at least two execution back-ends, with a cost estimate, access-control documentation and a handover document sufficient for someone else to deploy it.' },
+    deliverable: 'A deployed, documented pipeline: usually targeting at least two execution back-ends, with a cost estimate, access-control documentation and a handover document sufficient for someone else to deploy it.' },
   { code: 'T5', title: 'Computational Synthetic Biology and Gene Circuit Design', meta: 'Mentored track · in silico only',
     blurb: 'Design, modelling and simulation of genetic constructs and regulatory circuits.',
     topics: [
       { group: 'Topics drawn on, as the project requires', items: t(['Parts, devices and chassis: promoters, RBSs, coding sequences, terminators and insulators; standardised registries and what characterisation data does not transfer', 'Sequence-to-expression prediction: promoter strength models, RBS calculators, codon optimisation, and why predictions fail', 'Transcriptional logic design: repressor and activator architectures, logic gates, CRISPRi and CRISPRa', 'Circuit dynamics and modelling: deterministic ODE and stochastic simulation; toggle switches, feedback loops, oscillators; sensitivity and robustness', 'Structural modelling of engineered regulators', 'Host context and burden: metabolic load, resource competition, and why a circuit that simulates correctly may still fail in a cell', 'Biosafety and biosecurity by design: containment strategies, kill-switch architectures in concept, dual-use considerations']) }
     ],
-    deliverable: 'An in-silico design report — annotated construct design, sequence-level justification, dynamic simulation, structural assessment of any engineered protein component, a biosafety section, and what experimental validation would be required. Assessed as a design document, not a validated result.' },
+    deliverable: 'An in-silico design report: annotated construct design, sequence-level justification, dynamic simulation, structural assessment of any engineered protein component, a biosafety section, and what experimental validation would be required. Assessed as a design document, not a validated result.' },
   { code: '12', title: 'Industrial Project Integration, Execution and Technical Troubleshooting', meta: 'Phase 2',
     blurb: 'Fellows operate within a professional research framework, handling real-world complexity with expert oversight.',
     topics: [ { group: 'Topics', items: t(['Large-scale data integration: multi-sample datasets from public repositories or research collaborations', 'Operational troubleshooting: resolving complex pipeline failures with TGB technical leads', 'Weekly technical reviews: presenting progress and defending methodology', 'Applied industrial R&D: optimisation of active workflows in the Torrington Genomics ecosystem']) } ] },
@@ -191,9 +191,9 @@ const T3 = [
     blurb: 'Proof of work. Mentored scientific writing, journal-ready figures, and one final deliverable with your name on it.',
     topics: [
       { group: 'Topics', items: t(['Mentored scientific writing: rigorous Methods and Results sections reviewed by senior researchers', 'Advanced data visualisation: journal-ready figures for multi-omic findings']) },
-      { group: 'Final deliverable — choose one', items: t(['A research manuscript suitable for submission to a peer-reviewed journal or preprint server', 'A production-ready containerised pipeline (Docker/Singularity)', 'A structured industry white paper analysing a biological problem or tool performance', 'An open-source contribution: a new or significantly improved tool or package on GitHub']) }
+      { group: 'Final deliverable: choose one', items: t(['A research manuscript suitable for submission to a peer-reviewed journal or preprint server', 'A production-ready containerised pipeline (Docker/Singularity)', 'A structured industry white paper analysing a biological problem or tool performance', 'An open-source contribution: a new or significantly improved tool or package on GitHub']) }
     ],
-    deliverable: 'Defined in the project scoping agreement reached with your mentor at the start of the tier — not fixed in advance by track.' }
+    deliverable: 'Defined in the project scoping agreement reached with your mentor at the start of the tier, not fixed in advance by track.' }
 ];
 
 const PROGS = {
@@ -232,7 +232,7 @@ const PROGS = {
   custom: {
     code: 'Custom', name: 'Custom track', kicker: 'Shaped to your requirement · includes a mini research project',
     full: 'Custom Track',
-    lead: "For requirements the fixed tiers don't cover. Tell us the focus area, duration and format you need when you apply, and we scope a track around it — delivered with the same mentorship and lab access as the tiered pathway.",
+    lead: "For requirements the fixed tiers don't cover. Tell us the focus area, duration and format you need when you apply, and we scope a track around it, delivered with the same mentorship and lab access as the tiered pathway.",
     audience: t(['Organisations sponsoring a trainee for a specific need', 'Applicants whose goals fall outside the fixed tiers']),
     assessment: 'Agreed individually as part of the scoping conversation.',
     count: 'Scoped with you',
@@ -266,7 +266,7 @@ const TIERS = [
 const TRACKS = ['Genomics', 'Transcriptomics', 'Structural bioinformatics', 'Cloud pipeline engineering', 'Computational synthetic biology', 'Undecided'];
 const FEES = [
   { v: 'full', label: 'No', hint: 'The fee covers what the programme costs to run.' },
-  { v: 'waiver', label: 'Yes — I am applying for a fee waiver', hint: 'Decided case by case, and never held against your application.' }
+  { v: 'waiver', label: 'Yes, I am applying for a fee waiver', hint: 'Decided case by case, and never held against your application.' }
 ];
 
 // ---- Access-tile line-art icons (ported 1:1 from the design canvas) ----
@@ -478,7 +478,7 @@ const ACCESS = [
   { n: '01', Icon: AccessLabIcon, label: 'Our laboratory', body: 'Work alongside others in our purpose-built bioinformatics laboratory, with staff on hand during opening hours.' },
   { n: '02', Icon: AccessRemoteIcon, label: 'Remote access', body: 'Log in to our training servers from home and keep working outside laboratory hours.' },
   { n: '03', Icon: AccessMentorIcon, label: 'Mentoring', body: 'Practical sessions led by the bioinformaticians and scientists who do this professionally.' },
-  { n: '04', Icon: AccessNetworkIcon, label: 'People worth knowing', body: 'Regular sessions with senior figures from academia and industry — to understand how they think about problems, and to build the contacts that matter later.' },
+  { n: '04', Icon: AccessNetworkIcon, label: 'People worth knowing', body: 'Regular sessions with senior figures from academia and industry, to understand how they think about problems, and to build the contacts that matter later.' },
   { n: '05', Icon: AccessPracticeIcon, label: 'Practice, at your pace', body: 'Structured computing exercises you work through on your own time.' },
   { n: '06', Icon: AccessLectureIcon, label: 'Focused lectures', body: 'From our genomics and bioinformatics panel, including guest lecturers from universities and institutes.' },
   { n: '07', Icon: AccessCompanyIcon, label: 'A company, up close', body: 'You are inside an active bioinformatics business, so you see how one actually runs day to day.' },
@@ -552,9 +552,9 @@ function BCHero() {
   const intakeLabel = INTAKE_MONTH ? INTAKE_MONTH + ' intake open' : 'Intake open';
   const stats = [
     ['6', ' months', 'Full pathway, three exit points'],
-    ['40', '+h', 'Complete bioinformatics course — Bridge Programme, free of charge'],
+    ['40', '+h', 'Complete bioinformatics course: Bridge Programme, free of charge'],
     ['20', '+', 'Modules across the Bridge Programme and three tiers'],
-    ['Unlimited', '', 'Hours of industrial exposure — as much as you are willing to put in']
+    ['Unlimited', '', 'Hours of industrial exposure, as much as you are willing to put in']
   ];
   return (
     <div style={cs('max-width:1240px; margin:0 auto; padding:0 clamp(20px,5vw,56px)')}>
@@ -603,11 +603,11 @@ function BCNote() {
           <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:' + BC_DIM)}>01 — Why this exists</span>
         </div>
         <h2 style={cs('margin:0 0 8px; max-width:34ch; font-family:Newsreader,serif; font-weight:300; font-size:clamp(34px,5vw,64px); line-height:1.02; letter-spacing:-2.4px; color:' + BC_INK)}>
-          Bioinformatics is no longer the future of biology — <em style={{ fontStyle: 'italic', background: BC_GRAD, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>it is its present</em>
+          Bioinformatics is no longer the future of biology. <em style={{ fontStyle: 'italic', background: BC_GRAD, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>It is its present</em>
         </h2>
         <p style={cs('margin:0 0 22px; font-size:13px; color:' + BC_DIM)}>An open letter from Nilaksha Freeson, Co-Founder, Director & CEO, Torrington Genomics & Bioinformatics</p>
         <p style={cs('margin:0 0 16px; max-width:62ch; font-family:Newsreader,serif; font-style:italic; font-size:15px; line-height:1.7; color:' + BC_INK2)}>Hi there, I hope this letter finds you well. Congratulations on choosing to become a scientist in Sri Lanka, a decision that takes real courage. I wanted to share a few thoughts with you.</p>
-        <p style={cs('margin:0 0 22px; max-width:62ch; font-family:Newsreader,serif; font-style:italic; font-size:15px; line-height:1.7; color:' + BC_INK2)}>By the time you finish a life science or biomedical degree in Sri Lanka, you are competent in a great many ways. Those fundamentals matter — but the world has already moved, and bioinformatics is no longer a discipline that sits on its own.</p>
+        <p style={cs('margin:0 0 22px; max-width:62ch; font-family:Newsreader,serif; font-style:italic; font-size:15px; line-height:1.7; color:' + BC_INK2)}>By the time you finish a life science or biomedical degree in Sri Lanka, you are competent in a great many ways. Those fundamentals matter, but the world has already moved, and bioinformatics is no longer a discipline that sits on its own.</p>
         <button type="button" onClick={() => setOpen(true)} style={cs('display:inline-flex; align-items:center; gap:8px; padding:13px 24px; border-radius:999px; border:none; background:' + BC_GRAD + '; color:#fff; font-size:13px; font-weight:600; cursor:pointer; box-shadow:0 12px 36px -10px rgba(61,168,200,0.4)')}>Read the full letter →</button>
       </section>
 
@@ -642,9 +642,9 @@ function BCNote() {
             ))}
 
             <p style={cs('font-family:Newsreader,serif; font-weight:300; font-size:21px; line-height:1.3; letter-spacing:-0.8px; color:' + BC_INK + '; margin:16px 0 0; max-width:600px')}>
-              Which tells us one thing. <b>Bioinformatics</b> is no longer the future of biology — <em style={{ fontStyle: 'italic', background: `linear-gradient(135deg, ${BC_BLUE} 0%, ${BC_TEAL} 100%)`, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>it is its present.</em>
+              Which tells us one thing. <b>Bioinformatics</b> is no longer the future of biology. <em style={{ fontStyle: 'italic', background: `linear-gradient(135deg, ${BC_BLUE} 0%, ${BC_TEAL} 100%)`, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>It is its present.</em>
             </p>
-            <p style={cs('font-family:Newsreader,serif; font-size:15px; line-height:1.45; color:' + BC_INK2 + '; text-align:justify; hyphens:auto; margin:10px 0 0; max-width:640px')}>It is a multi-billion dollar industry growing at double-digit rates year on year, driven by exactly those two forces, and it is not something we can afford to disregard here. Generating sequence data is no longer the difficult part — the machines are here, in hospitals, in universities, in laboratories across the country. The constraint now is the number of people who can turn what comes off them into an answer.</p>
+            <p style={cs('font-family:Newsreader,serif; font-size:15px; line-height:1.45; color:' + BC_INK2 + '; text-align:justify; hyphens:auto; margin:10px 0 0; max-width:640px')}>It is a multi-billion dollar industry growing at double-digit rates year on year, driven by exactly those two forces, and it is not something we can afford to disregard here. Generating sequence data is no longer the difficult part. The machines are here, in hospitals, in universities, in laboratories across the country. The constraint now is the number of people who can turn what comes off them into an answer.</p>
             <p style={cs('font-family:Newsreader,serif; font-size:15px; line-height:1.45; color:' + BC_INK2 + '; text-align:justify; hyphens:auto; margin:10px 0 0; max-width:640px')}>So, whether you are stepping into a diagnostic laboratory, starting postgraduate research, applying abroad for a PhD, looking for a job, or building a case for residency in another country, bioinformatics matters to you. It has been absorbed into all of the life sciences. That leaves a specific group of people stuck:</p>
 
             <div style={cs('margin:12px 0 0; max-width:640px; border-top:1px solid rgba(15,26,36,0.08)')}>
@@ -661,7 +661,7 @@ function BCNote() {
             <p style={cs('font-family:Newsreader,serif; font-size:15px; line-height:1.45; color:' + BC_INK2 + '; text-align:justify; hyphens:auto; margin:10px 0 0; max-width:640px')}>TGB has been running since 2018 as a commercial genomics and bioinformatics company, earning from real analyses for real clients, locally and internationally. Eight years on we are still doing exactly that, and it is what funds this. Teaching has never been our revenue model. We ask a reasonable fee to cover what the programme costs us to run, and nothing beyond it. <strong style={{ color: BC_INK }}>If the fee is a barrier, write to us.</strong> We set aside a limited number of reduced-fee and fully waived places in each cohort, decided case by case.</p>
 
             <h2 style={cs('font-family:Newsreader,serif; font-size:18px; letter-spacing:-0.5px; color:' + BC_INK + '; margin:20px 0 0')}><b>How the programme is built</b></h2>
-            <p style={cs('font-family:Newsreader,serif; font-size:15px; line-height:1.45; color:' + BC_INK2 + '; text-align:justify; hyphens:auto; margin:10px 0 0; max-width:640px')}>Our programme has two parts that run together. The <strong style={{ color: BC_INK }}>industrial traineeship</strong> is the core of it — a tiered internship inside our working company, with three points at which you can stop. Each figure is your total time with us, not an addition to the one before it.</p>
+            <p style={cs('font-family:Newsreader,serif; font-size:15px; line-height:1.45; color:' + BC_INK2 + '; text-align:justify; hyphens:auto; margin:10px 0 0; max-width:640px')}>Our programme has two parts that run together. The <strong style={{ color: BC_INK }}>industrial traineeship</strong> is the core of it: a tiered internship inside our working company, with three points at which you can stop. Each figure is your total time with us, not an addition to the one before it.</p>
 
             <div style={cs('display:grid; grid-template-columns:1fr 1fr 1fr; max-width:640px; margin:12px 0 0; gap:24px; padding:10px 0; border-top:1px solid rgba(15,26,36,0.08); border-bottom:1px solid rgba(15,26,36,0.08)')}>
               {[['6 weeks', 'TIER 1 · APPLIED BIOINFORMATICS'], ['3 months', 'TIER 2 · MULTI-OMIC BIOINFORMATICS & NGS'], ['6 months', 'TIER 3 · RESEARCH FELLOWSHIP']].map(([n, l]) => (
@@ -1010,7 +1010,7 @@ function BCApply() {
         setAppRef(ref);
         setSubmitted(true);
       })
-      .catch(() => setFormError('Something went wrong sending your application — please email us directly at scholars@torrington-gb.com.'))
+      .catch(() => setFormError('Something went wrong sending your application. Please email us directly at scholars@torrington-gb.com.'))
       .finally(() => setSubmitting(false));
   };
 
@@ -1037,13 +1037,13 @@ function BCApply() {
     ['Field of study', (form.fieldOfStudy === 'Other' ? form.fieldOfStudyOther || 'Other' : form.fieldOfStudy) || '—'],
     ['Year / graduation', form.year || '—'],
     ['Computing', (COMPUTING.find((x) => x.v === form.computing) || {}).label || '—'],
-    ['Own data', ((DATA_OPTS.find((x) => x.v === form.hasData) || {}).label || '—') + (form.dataDetail ? ' — ' + form.dataDetail : '')],
+    ['Own data', ((DATA_OPTS.find((x) => x.v === form.hasData) || {}).label || '—') + (form.dataDetail ? ' · ' + form.dataDetail : '')],
     ['Applying for', tierInfo ? tierInfo.label + ' (' + tierInfo.duration + ')' + (tierInfo.price ? ' · ' + tierInfo.price : '') : '—'],
     ['Tier 3 track', form.tier === 'full' ? form.track || 'Undecided' : 'Not applicable'],
     ['Custom track details', form.tier === 'custom' ? form.customNeed || '—' : 'Not applicable'],
     ['Statement', form.statement || '—'],
     ['Referee', form.refName ? form.refName + (form.refEmail ? ' · ' + form.refEmail : '') : 'None given'],
-    ['Fee waiver', ((FEES.find((x) => x.v === form.fee) || {}).label || '—') + (form.feeDetail ? ' — ' + form.feeDetail : '')]
+    ['Fee waiver', ((FEES.find((x) => x.v === form.fee) || {}).label || '—') + (form.feeDetail ? ' · ' + form.feeDetail : '')]
   ];
 
   return (
@@ -1093,7 +1093,7 @@ function BCApply() {
                 <input type="text" value={form.fullName} onChange={(e) => setField('fullName', e.target.value)} placeholder="Your name" style={fieldStyle} />
               </label>
               <label style={label}><span style={labelCap}>Email</span>
-                <input type="email" value={form.email} onChange={(e) => setField('email', e.target.value)} placeholder="Institutional address preferred — a personal one is fine" style={fieldStyle} />
+                <input type="email" value={form.email} onChange={(e) => setField('email', e.target.value)} placeholder="Institutional address preferred, a personal one is fine" style={fieldStyle} />
               </label>
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(160px,1fr))', gap: 14 }}>
                 <label style={label}><span style={labelCap}>Mobile</span>
@@ -1120,20 +1120,20 @@ function BCApply() {
                 <input type="text" value={form.institution} onChange={(e) => setField('institution', e.target.value)} placeholder="University, hospital, institute or company" style={fieldStyle} />
               </label>
               <div style={{ display: 'grid', gap: 10 }}>
-                <span style={labelCap}>Degree level <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>— optional</span></span>
+                <span style={labelCap}>Degree level <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>(optional)</span></span>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {DEGREE_LEVELS.map((r) => <button key={r} type="button" onClick={() => setField('degreeLevel', r)} style={chipStyle(form.degreeLevel === r)}>{r}</button>)}
                 </div>
                 {form.degreeLevel === 'Other' && <input type="text" value={form.degreeLevelOther} onChange={(e) => setField('degreeLevelOther', e.target.value)} placeholder="Please specify" style={fieldStyle} />}
               </div>
               <div style={{ display: 'grid', gap: 10 }}>
-                <span style={labelCap}>Field of study <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>— optional</span></span>
+                <span style={labelCap}>Field of study <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>(optional)</span></span>
                 <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
                   {FIELDS.map((r) => <button key={r} type="button" onClick={() => setField('fieldOfStudy', r)} style={chipStyle(form.fieldOfStudy === r)}>{r}</button>)}
                 </div>
                 {form.fieldOfStudy === 'Other' && <input type="text" value={form.fieldOfStudyOther} onChange={(e) => setField('fieldOfStudyOther', e.target.value)} placeholder="Please specify" style={fieldStyle} />}
               </div>
-              <label style={{ ...label, maxWidth: 280 }}><span style={labelCap}>Year / graduation <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>— optional</span></span>
+              <label style={{ ...label, maxWidth: 280 }}><span style={labelCap}>Year / graduation <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>(optional)</span></span>
                 <input type="text" value={form.year} onChange={(e) => setField('year', e.target.value)} placeholder="e.g. final year, 2027" style={fieldStyle} />
               </label>
               <div style={{ display: 'grid', gap: 10 }}>
@@ -1146,7 +1146,7 @@ function BCApply() {
                     </button>
                   ))}
                 </div>
-                <p style={{ margin: 0, fontSize: 12, lineHeight: 1.6, color: BC_DIM }}>No programming or bioinformatics experience is required to apply. Most applicants arrive with none — the course is built for it.</p>
+                <p style={{ margin: 0, fontSize: 12, lineHeight: 1.6, color: BC_DIM }}>No programming or bioinformatics experience is required to apply. Most applicants arrive with none. The course is built for it.</p>
               </div>
               <div style={{ display: 'grid', gap: 10 }}>
                 <span style={labelCap}>Do you have your own biological data</span>
@@ -1193,7 +1193,7 @@ function BCApply() {
               </div>}
               {form.tier === 'custom' &&
               <label style={label}><span style={labelCap}>What do you need</span>
-                <textarea rows={5} value={form.customNeed} onChange={(e) => setField('customNeed', e.target.value)} placeholder="Tell us what you're looking for — focus area, duration, format, and anything about your situation that a fixed tier doesn't cover." style={taStyle} />
+                <textarea rows={5} value={form.customNeed} onChange={(e) => setField('customNeed', e.target.value)} placeholder="Tell us what you're looking for: focus area, duration, format, and anything about your situation that a fixed tier doesn't cover." style={taStyle} />
                 <span style={cs('font-family:"JetBrains Mono",monospace; font-size:10px; color:' + BC_DIM)}>{form.customNeed.trim() ? form.customNeed.trim().split(/\s+/).length : 0} / 10 words minimum</span>
               </label>}
               <div style={{ display: 'grid', gap: 10 }}>
@@ -1222,7 +1222,7 @@ function BCApply() {
 
             {step === 4 &&
             <div style={{ display: 'grid', gap: 18 }}>
-              <label style={label}><span style={labelCap}>Why this programme, for you <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>— optional</span></span>
+              <label style={label}><span style={labelCap}>Why this programme, for you <span style={{ textTransform: 'none', letterSpacing: 0, fontWeight: 400 }}>(optional)</span></span>
                 <textarea rows={5} value={form.statement} onChange={(e) => setField('statement', e.target.value)} placeholder="What you want to be able to do at the end of it, and what you would use it for. A few honest sentences are better than a page." style={taStyle} />
                 <span style={cs('font-family:"JetBrains Mono",monospace; font-size:10px; color:' + BC_DIM)}>{words} words</span>
               </label>
