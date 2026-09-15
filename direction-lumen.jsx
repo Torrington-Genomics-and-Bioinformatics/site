@@ -157,6 +157,7 @@ function LumenNav() {
           {items.map(([label, id]) =>
           <span key={id} onClick={() => goTo(id)} style={{ fontSize: 13.5, color: LUM_INK, fontWeight: 500, cursor: 'pointer', letterSpacing: 0.1 }}>{label}</span>
           )}
+          <a href="bio-coder/" style={{ fontSize: 13.5, color: LUM_INK, fontWeight: 500, letterSpacing: 0.1, textDecoration: 'none' }}>Bio-Coder</a>
         </div>
         <div className="lum-nav-actions" style={{ gap: 10 }}>
           <button onClick={() => goToContact('Training request')} style={{
@@ -195,6 +196,10 @@ function LumenNav() {
           fontSize: 15, color: LUM_INK, fontWeight: 500, cursor: 'pointer'
         }}>{label}</span>
         )}
+        <a href="bio-coder/" style={{
+          padding: '13px 4px', borderBottom: `1px solid ${LUM_LINE}`,
+          fontSize: 15, color: LUM_INK, fontWeight: 500, textDecoration: 'none'
+        }}>Bio-Coder</a>
         <div style={{ display: 'flex', flexDirection: 'column', gap: 10, marginTop: 16 }}>
           <button onClick={() => goToContact('Training request')} style={{
             background: 'transparent', border: `1px solid ${LUM_LINE}`, color: LUM_INK,
