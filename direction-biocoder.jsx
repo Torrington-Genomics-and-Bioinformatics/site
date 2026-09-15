@@ -228,6 +228,20 @@ const PROGS = {
     audience: t(['Final-year students and graduates needing demonstrable proof of work', 'MSc, MPhil and PhD candidates needing end-to-end technical autonomy', 'Graduates targeting senior analyst and R&D roles', 'Established researchers moving into computational leadership']),
     assessment: 'Research logbook and weekly technical reviews (30%), an oral defence of methodology (20%) and the final deliverable (50%).',
     count: '4 modules · 5 tracks', modules: T3
+  },
+  custom: {
+    code: 'Custom', name: 'Custom track', kicker: 'Shaped to your requirement · includes a mini research project',
+    full: 'Custom Track',
+    lead: "For requirements the fixed tiers don't cover. Tell us the focus area, duration and format you need when you apply, and we scope a track around it — delivered with the same mentorship and lab access as the tiered pathway.",
+    audience: t(['Organisations sponsoring a trainee for a specific need', 'Applicants whose goals fall outside the fixed tiers']),
+    assessment: 'Agreed individually as part of the scoping conversation.',
+    count: 'Scoped with you',
+    modules: [{
+      code: 'C1', title: 'Scoped to what you need',
+      blurb: 'Every custom track starts as a conversation, not a fixed syllabus.',
+      topics: [{ group: 'How it works', items: t(['You tell us the focus area, duration and format you need', 'We scope a track and a mini research project around it', 'Delivered with the same mentorship and lab access as the tiered pathway']) }],
+      deliverable: 'A mini research project, agreed with your mentor at the start of the track.'
+    }]
   }
 };
 
@@ -247,7 +261,7 @@ const TIERS = [
   { v: 't1', duration: '6 weeks', label: 'Tier 1 (Bridge Programme included)', hint: 'Applied Bioinformatics Practice', price: 'LKR 48,000' },
   { v: 't2', duration: '3 months', label: 'Tier 1 + 2', hint: 'Multi-omic Bioinformatics & NGS', price: 'LKR 125,000' },
   { v: 'full', duration: '6 months', label: 'Full pathway', hint: 'Through the Tier 3 research capstone', price: 'LKR 220,000' },
-  { v: 'custom', duration: 'Custom', label: 'Custom track', hint: 'Tell us what you need', price: '' }
+  { v: 'custom', duration: 'Custom', label: 'Custom track', hint: 'Shaped to your requirement, with a mini research project', price: '' }
 ];
 const TRACKS = ['Genomics', 'Transcriptomics', 'Structural bioinformatics', 'Cloud pipeline engineering', 'Computational synthetic biology', 'Undecided'];
 const FEES = [
@@ -725,7 +739,7 @@ function BCPathway() {
 
   const setStop = (n) => () => {
     setStopN(n);
-    setProg(n === 1 ? 'bridge' : n === 2 ? 't2' : 't3');
+    setProg(n === 1 ? 'bridge' : n === 2 ? 't2' : n === 3 ? 't3' : 'custom');
     setModIndex(0);
   };
 
@@ -762,9 +776,9 @@ function BCPathway() {
           <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:rgba(255,255,255,0.62)')}>02 — The pathway &amp; curriculum</span>
         </div>
         <h2 style={cs('margin:0 0 14px; max-width:22ch; font-family:Newsreader,serif; font-weight:300; font-size:clamp(32px,4.6vw,58px); line-height:1.04; letter-spacing:-2.2px; color:#fff')}>
-          One pathway, <em style={{ fontStyle: 'italic', background: BC_GRAD, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>three places to stop</em>
+          One pathway, <em style={{ fontStyle: 'italic', background: BC_GRAD, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>four places to stop</em>
         </h2>
-        <p style={cs('margin:0 0 34px; max-width:64ch; font-size:15px; line-height:1.7; color:rgba(255,255,255,0.62)')}>Each figure is your total time with us, not an addition to the one before it. Pick a stop on the strand to read its curriculum, module by module.</p>
+        <p style={cs('margin:0 0 34px; max-width:64ch; font-size:15px; line-height:1.7; color:rgba(255,255,255,0.62)')}>Each figure is your total time with us, not an addition to the one before it. Pick a stop on the strand to see what it covers.</p>
 
         <div id="curriculum" className="bc-curriculum-grid">
           <div style={{ minWidth: 0 }}>
@@ -786,18 +800,25 @@ function BCPathway() {
                   <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9px; letter-spacing:1.4px; text-transform:uppercase; opacity:0.75')}>6 weeks</span>
                 </span>
               </button>
-              <button type="button" onClick={setStop(2)} style={pill(2, 240)}>
+              <button type="button" onClick={setStop(2)} style={pill(2, 188)}>
                 <span style={disc(2)}>02</span>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 3, textAlign: 'left', minWidth: 0 }}>
                   <span style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.25 }}>Tier 2</span>
                   <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9px; letter-spacing:1.4px; text-transform:uppercase; opacity:0.75')}>3 months total</span>
                 </span>
               </button>
-              <button type="button" onClick={setStop(3)} style={pill(3, 396)}>
+              <button type="button" onClick={setStop(3)} style={pill(3, 292)}>
                 <span style={disc(3)}>03</span>
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 3, textAlign: 'left', minWidth: 0 }}>
                   <span style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.25 }}>Tier 3</span>
                   <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9px; letter-spacing:1.4px; text-transform:uppercase; opacity:0.75')}>6 months total</span>
+                </span>
+              </button>
+              <button type="button" onClick={setStop(4)} style={pill(4, 396)}>
+                <span style={disc(4)}>04</span>
+                <span style={{ display: 'flex', flexDirection: 'column', gap: 3, textAlign: 'left', minWidth: 0 }}>
+                  <span style={{ fontSize: 13, fontWeight: 600, lineHeight: 1.25 }}>Custom track</span>
+                  <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9px; letter-spacing:1.4px; text-transform:uppercase; opacity:0.75')}>Scoped with you</span>
                 </span>
               </button>
             </div>
@@ -1145,7 +1166,7 @@ function BCApply() {
                 <span style={labelCap}>Which exit point are you applying for</span>
                 <div style={cs('display:grid; gap:1px; background:' + BC_LINE + '; border:1px solid ' + BC_LINE + '; border-radius:14px; overflow:hidden')}>
                   <style>{`
-                    .bc-tier-row { display: grid !important; grid-template-columns: 70px minmax(0,1.25fr) minmax(0,1fr) auto; gap: 16px; align-items: center; }
+                    .bc-tier-row { display: grid !important; grid-template-columns: 70px minmax(0,1.25fr) minmax(0,1fr) 132px; gap: 16px; align-items: center; }
                     @media (max-width: 560px) {
                       .bc-tier-row { grid-template-columns: 1fr auto; row-gap: 4px; }
                       .bc-tier-row .bc-tier-hint { grid-column: 1 / -1; }
