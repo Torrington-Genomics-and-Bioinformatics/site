@@ -31,14 +31,21 @@ jobs:
           branch: deploy
           folder: dist
 
-      - name: Deploy straight to cPanel over SSH
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: torrington-gb.com
-          port: 9750
-          username: torringt
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          source: "dist/*,dist/.[!.]*"
-          target: "/home/torringt/public_html/"
-          strip_components: 1
-          overwrite: true
+      # Direct SSH deploy — disabled for now. Port 9750 is this account's only open
+      # SSH port and it only serves cPanel's own Git Version Control git-shell; general
+      # SCP/shell access to it is rejected (confirmed: key shows "authorized" in
+      # cPanel's SSH Access UI, but the server declines it outright during auth, and
+      # the standard port 22 is closed entirely). Re-enable this step if the host ever
+      # turns on general SSH/shell access for this account — the DEPLOY_SSH_KEY repo
+      # secret is already set and ready to go.
+      # - name: Deploy straight to cPanel over SSH
+      #   uses: appleboy/scp-action@v0.1.7
+      #   with:
+      #     host: torrington-gb.com
+      #     port: 9750
+      #     username: torringt
+      #     key: ${{ secrets.DEPLOY_SSH_KEY }}
+      #     source: "dist/*,dist/.[!.]*"
+      #     target: "/home/torringt/public_html/"
+      #     strip_components: 1
+      #     overwrite: true
