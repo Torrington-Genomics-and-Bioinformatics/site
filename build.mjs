@@ -30,6 +30,9 @@ cpSync('index.html', `${outDir}/index.html`);
 cpSync('robots.txt', `${outDir}/robots.txt`);
 cpSync('sitemap.xml', `${outDir}/sitemap.xml`);
 cpSync('bio-coder-prod.html', `${outDir}/bio-coder/index.html`);
+// cPanel's Git Version Control deploy step needs this at the dist/ root — without it,
+// "Deploy HEAD Commit" fails with "A valid .cpanel.yml file must exist".
+cpSync('.cpanel.yml', `${outDir}/.cpanel.yml`);
 
 cpSync('assets/TGB-logo-trimmed.png', `${outDir}/assets/TGB-logo-trimmed.png`);
 cpSync('assets/favicon', `${outDir}/assets/favicon`, { recursive: true });
