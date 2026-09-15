@@ -244,7 +244,7 @@ const DISTRICTS = ['Colombo', 'Gampaha', 'Kalutara', 'Kandy', 'Matale', 'Nuwara 
 const DEGREE_LEVELS = ['BSc', 'MPhil / PhD', 'Other'];
 const FIELDS = ['Biomedical and Biotechnology', 'Plant Science', 'Immunology', 'Bioinformatics', 'Other'];
 const TIERS = [
-  { v: 't1', duration: '6 weeks', label: 'Tier 1 (Bridge Programme included)', hint: 'Applied Bioinformatics Practice', price: 'LKR 75,000' },
+  { v: 't1', duration: '6 weeks', label: 'Tier 1 (Bridge Programme included)', hint: 'Applied Bioinformatics Practice', price: 'LKR 48,000' },
   { v: 't2', duration: '3 months', label: 'Tier 1 + 2', hint: 'Multi-omic Bioinformatics & NGS', price: 'LKR 125,000' },
   { v: 'full', duration: '6 months', label: 'Full pathway', hint: 'Through the Tier 3 research capstone', price: 'LKR 220,000' }
 ];
