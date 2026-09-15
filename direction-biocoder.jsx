@@ -499,6 +499,7 @@ function BCNav() {
       `}</style>
       <div style={cs('max-width:1240px; margin:0 auto; padding:14px clamp(20px,5vw,56px); display:flex; align-items:center; gap:24px; flex-wrap:wrap')}>
         <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={cs('height:34px; width:auto; object-fit:contain')} />
+        <img src="assets/tsi-mark-40.png" alt="" style={cs('height:26px; width:auto; object-fit:contain')} />
         <span style={cs('font-family:Newsreader,serif; font-style:italic; font-size:15px; color:' + BC_INK2)}>Scholars Institute</span>
         <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:' + BC_DIM + '; padding:5px 11px; border:1px solid ' + BC_LINE + '; border-radius:999px')}>Bio-Coder</span>
         <div style={{ flex: 1 }} />
@@ -508,7 +509,7 @@ function BCNav() {
           ))}
         </div>
         <div className="bc-nav-cta">
-          <a href="#apply" onClick={(e) => { e.preventDefault(); goTo('apply'); }} style={cs('padding:10px 20px; border-radius:999px; background:' + BC_GRAD + '; color:#fff; font-size:13px; font-weight:600; box-shadow:0 12px 36px -14px rgba(44,116,102,0.55); cursor:pointer')}>Apply →</a>
+          <a href="#apply" onClick={(e) => { e.preventDefault(); goTo('apply'); }} style={cs('padding:10px 20px; border-radius:999px; background:' + BC_GRAD + '; color:#fff; font-size:13px; font-weight:600; box-shadow:0 12px 36px -14px rgba(44,116,102,0.55); cursor:pointer; text-decoration:none')}>Apply →</a>
         </div>
         <button
           className="bc-nav-toggle"
@@ -526,7 +527,7 @@ function BCNav() {
         {items.map(([label, id]) => (
           <span key={id} onClick={() => goTo(id)} style={cs('padding:13px 4px; border-bottom:1px solid ' + BC_LINE + '; font-size:15px; color:' + BC_INK + '; font-weight:500; cursor:pointer')}>{label}</span>
         ))}
-        <a href="#apply" onClick={() => setOpen(false)} style={cs('margin-top:14px; text-align:center; padding:12px 20px; border-radius:999px; background:' + BC_GRAD + '; color:#fff; font-size:14px; font-weight:600')}>Apply →</a>
+        <a href="#apply" onClick={() => setOpen(false)} style={cs('margin-top:14px; text-align:center; padding:12px 20px; border-radius:999px; background:' + BC_GRAD + '; color:#fff; font-size:14px; font-weight:600; text-decoration:none')}>Apply →</a>
       </div>}
     </nav>
   );
@@ -559,9 +560,9 @@ function BCHero() {
           </h1>
           <p style={cs('margin:0; max-width:62ch; font-size:16.5px; line-height:1.65; color:rgba(255,255,255,0.68)')}>Sharpen your knowledge and skills inside a working genomics company, taught on live data by practising academics and the people who do this commercially every day.</p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <a href="#note" style={cs('padding:16px 30px; border-radius:999px; background:rgba(255,255,255,0.08); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.14); color:#fff; font-size:14px; font-weight:600')}>Why this is important</a>
-            <a href="#curriculum" style={cs('padding:16px 30px; border-radius:999px; background:rgba(255,255,255,0.08); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.14); color:#fff; font-size:14px; font-weight:600')}>Read the pathways and curriculum</a>
-            <a href="#apply" style={cs('padding:16px 30px; border-radius:999px; background:' + BC_GRAD + '; color:#fff; font-size:14px; font-weight:600; box-shadow:0 12px 36px -10px rgba(44,116,102,0.55)')}>Start your application →</a>
+            <a href="#note" style={cs('padding:16px 30px; border-radius:999px; background:rgba(255,255,255,0.08); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.14); color:#fff; font-size:14px; font-weight:600; text-decoration:none')}>Why this is important</a>
+            <a href="#curriculum" style={cs('padding:16px 30px; border-radius:999px; background:rgba(255,255,255,0.08); backdrop-filter:blur(8px); border:1px solid rgba(255,255,255,0.14); color:#fff; font-size:14px; font-weight:600; text-decoration:none')}>Read the pathways and curriculum</a>
+            <a href="#apply" style={cs('padding:16px 30px; border-radius:999px; background:' + BC_GRAD + '; color:#fff; font-size:14px; font-weight:600; box-shadow:0 12px 36px -10px rgba(44,116,102,0.55); text-decoration:none')}>Start your application →</a>
           </div>
         </div>
         <div style={cs('position:relative; margin-top:clamp(40px,6vw,72px); display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:1px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.14); border-radius:14px; overflow:hidden')}>
@@ -604,6 +605,7 @@ function BCNote() {
           <div style={cs('padding:clamp(28px,4vw,48px) clamp(24px,4vw,44px); max-height:88vh; overflow:auto')}>
             <div style={cs('display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid rgba(15,26,36,0.08)')}>
               <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={cs('height:32px; width:auto; display:block')} />
+              <img src="assets/tsi-mark-68.png" alt="" style={cs('height:44px; width:auto; display:block')} />
               <span style={cs('font-family:Newsreader,serif; font-style:italic; font-size:18px; color:' + BC_INK2)}>Scholars Institute</span>
             </div>
             <div style={cs('display:flex; align-items:baseline; justify-content:space-between; gap:24px; font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; color:' + BC_DIM)}>
@@ -1273,22 +1275,25 @@ function BCFooter() {
         <div style={cs('display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(28px,4vw,56px)')}>
           <div style={{ minWidth: 0 }}>
             <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={{ height: 36, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-            <div style={cs('margin-top:18px; font-family:Newsreader,serif; font-style:italic; font-size:17px; color:rgba(255,255,255,0.85)')}>Torrington Scholars Institute</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}>
+              <img src="assets/tsi-mark-40.png" alt="" style={{ height: 22, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+              <span style={cs('font-family:Newsreader,serif; font-style:italic; font-size:17px; color:rgba(255,255,255,0.85)')}>Torrington Scholars Institute</span>
+            </div>
             <p style={cs('margin:22px 0 0; max-width:40ch; font-size:13.5px; line-height:1.65; color:rgba(255,255,255,0.70)')}>Torrington Genomics &amp; Bioinformatics (Pvt) Ltd · Orion Towers, Colombo. The Torrington Scholars Institute is our teaching subsidiary.</p>
           </div>
           <div style={{ minWidth: 0 }}>
             <div style={cs('font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:16px')}>Bio-Coder</div>
             <div style={{ display: 'grid', gap: 10 }}>
-              <a href="#note" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70)')}>Why it exists</a>
-              <a href="#curriculum" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70)')}>Pathway &amp; curriculum</a>
-              <a href="#apply" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70)')}>Apply</a>
+              <a href="#note" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70); text-decoration:none')}>Why it exists</a>
+              <a href="#curriculum" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70); text-decoration:none')}>Pathway &amp; curriculum</a>
+              <a href="#apply" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70); text-decoration:none')}>Apply</a>
             </div>
           </div>
           <div style={{ minWidth: 0 }}>
             <div style={cs('font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:700; letter-spacing:2.2px; text-transform:uppercase; color:rgba(255,255,255,0.55); margin-bottom:16px')}>Contact</div>
             <div style={{ display: 'grid', gap: 10 }}>
-              <a href="mailto:scholars@torrington-gb.com" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70)')}>scholars@torrington-gb.com</a>
-              <a href="https://torrington-gb.com" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70)')}>torrington-gb.com</a>
+              <a href="mailto:scholars@torrington-gb.com" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70); text-decoration:none')}>scholars@torrington-gb.com</a>
+              <a href="https://torrington-gb.com" style={cs('font-size:13.5px; color:rgba(255,255,255,0.70); text-decoration:none')}>torrington-gb.com</a>
             </div>
             <p style={cs('margin:22px 0 0; font-size:12px; line-height:1.6; color:rgba(255,255,255,0.55)')}>If the fee is a barrier, write to us. We are not here to sell courses.</p>
           </div>
@@ -1305,6 +1310,7 @@ function BCFooter() {
 function DirectionBioCoder() {
   return (
     <div style={{ background: BC_PAPER, color: BC_INK, fontFamily: 'Inter, sans-serif', minHeight: '100%' }}>
+      <style>{`a { text-decoration: none; }`}</style>
       <BCNav />
       <BCHero />
       <BCNote />

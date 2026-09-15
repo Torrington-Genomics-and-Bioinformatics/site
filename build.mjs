@@ -41,7 +41,7 @@ for (const f of ['celemics.png', 'gen2me.png', 'centogene-clean.png', 'medgenome
   cpSync(`logos/${f}`, `${outDir}/logos/${f}`);
 }
 
-for (const f of ['TGB-logo-trimmed.png', 'signature.png']) {
+for (const f of ['TGB-logo-trimmed.png', 'signature.png', 'tsi-mark-40.png', 'tsi-mark-68.png']) {
   cpSync(`assets/${f}`, `${outDir}/bio-coder/assets/${f}`);
 }
 
