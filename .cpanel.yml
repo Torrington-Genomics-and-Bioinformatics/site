@@ -1,4 +1,5 @@
 ---
 deployment:
   tasks:
-    - /bin/cp -R /home/torringt/repositories/site/dist/. /home/torringt/public_html/
+    - /bin/cp -R /home/torringt/repositories/site/. /home/torringt/public_html/
+    - /bin/rm -rf /home/torringt/public_html/.git
