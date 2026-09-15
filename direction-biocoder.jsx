@@ -158,32 +158,27 @@ const T3 = [
     blurb: 'From running an established pipeline to evaluating and adapting one against a specific dataset, with attention to the edge cases a standard pipeline handles poorly.',
     topics: [
       { group: 'Topics drawn on, as the project requires', items: t(['Pipeline evaluation: comparing callers on the same dataset against GIAB or an equivalent truth set', 'Difficult regions and variant classes: low-complexity regions, segmental duplications, CNV and structural variants', 'Advanced filtering and prioritisation: population frequency, in-silico predictors, conservation and structural evidence in one framework', 'Cohort-level analysis: joint genotyping, case-control comparison and basic burden testing', 'Clinical and research reporting: distinguishing pipeline output from clinical interpretation']) }
-    ],
-    deliverable: "A variant analysis report on the agreed dataset: usually pipeline justification, prioritised and classified variants with supporting evidence, and a discussion of the pipeline's limitations on that data." },
+    ] },
   { code: 'T2', title: 'Transcriptomics: RNA-seq Modelling and Single-Cell Sequencing', meta: 'Mentored track',
     blurb: 'Independent statistical analysis of expression data, plus an introduction to single-cell methods.',
     topics: [
       { group: 'Topics drawn on, as the project requires', items: t(['Experimental design for RNA-seq: replicates, batch effects, confounding, and how design constrains conclusions', 'Advanced differential expression: model choice, covariate adjustment, interaction terms', 'Pathway and gene set analysis: GSEA and over-representation approaches, and their common misuses', 'Introduction to single-cell RNA-seq: cell calling, quality filtering, doublet detection', 'Dimensionality reduction and clustering: PCA, UMAP, and cluster annotation against marker genes']) }
-    ],
-    deliverable: 'A transcriptomic analysis report running from raw counts to interpreted result, with statistical justification of method choices and publication-quality figures.' },
+    ] },
   { code: 'T3', title: 'Structural Bioinformatics: Protein Modelling and Structure-Based Prediction', meta: 'Mentored track',
     blurb: 'Structure prediction and molecular modelling applied to variant interpretation.',
     topics: [
       { group: 'Topics drawn on, as the project requires', items: t(['Protein structure prediction: AlphaFold and related tools, confidence metrics (pLDDT, PAE) and their proper interpretation', 'Variant effect on structure: stability prediction (FoldX, DynaMut2 or equivalent) and interaction-interface effects', 'Molecular dynamics simulation: setup, run parameters, and interpretation of trajectory data', 'Comparative structural analysis: cross-checking predictions across tools and the known failure modes of each', 'Structure-based evidence in variant classification: where it fits the ACMG framework, and its limits']) }
-    ],
-    deliverable: 'A structural evidence report on the agreed variant or protein: the modelled structure, stability and interaction analysis, a molecular dynamics component where warranted, and a statement of the strength and limits of the evidence.' },
+    ] },
   { code: 'T4', title: 'Cloud-Based Pipeline Engineering: Scalable Architectures', meta: 'Mentored track',
     blurb: 'Workflow orchestration taken into cloud-native, production-scale pipeline design.',
     topics: [
       { group: 'Topics drawn on, as the project requires', items: t(['Cloud fundamentals for bioinformatics: compute, storage and networking at genomic scale', 'Portable pipeline configuration: execution profiles, resource requests, writing once for multiple back-ends', 'Cost and resource management: estimating and controlling spend on large workloads', 'Data handling and access control in the cloud: encryption, access policy, and the extra care genomic data requires', 'Scaling and parallelisation, and the failure modes unique to distributed execution', 'Deployment and handover documentation']) }
-    ],
-    deliverable: 'A deployed, documented pipeline: usually targeting at least two execution back-ends, with a cost estimate, access-control documentation and a handover document sufficient for someone else to deploy it.' },
+    ] },
   { code: 'T5', title: 'Computational Synthetic Biology and Gene Circuit Design', meta: 'Mentored track · in silico only',
     blurb: 'Design, modelling and simulation of genetic constructs and regulatory circuits.',
     topics: [
       { group: 'Topics drawn on, as the project requires', items: t(['Parts, devices and chassis: promoters, RBSs, coding sequences, terminators and insulators; standardised registries and what characterisation data does not transfer', 'Sequence-to-expression prediction: promoter strength models, RBS calculators, codon optimisation, and why predictions fail', 'Transcriptional logic design: repressor and activator architectures, logic gates, CRISPRi and CRISPRa', 'Circuit dynamics and modelling: deterministic ODE and stochastic simulation; toggle switches, feedback loops, oscillators; sensitivity and robustness', 'Structural modelling of engineered regulators', 'Host context and burden: metabolic load, resource competition, and why a circuit that simulates correctly may still fail in a cell', 'Biosafety and biosecurity by design: containment strategies, kill-switch architectures in concept, dual-use considerations']) }
-    ],
-    deliverable: 'An in-silico design report: annotated construct design, sequence-level justification, dynamic simulation, structural assessment of any engineered protein component, a biosafety section, and what experimental validation would be required. Assessed as a design document, not a validated result.' },
+    ] },
   { code: '12', title: 'Industrial Project Integration, Execution and Technical Troubleshooting', meta: 'Phase 2',
     blurb: 'Fellows operate within a professional research framework, handling real-world complexity with expert oversight.',
     topics: [ { group: 'Topics', items: t(['Large-scale data integration: multi-sample datasets from public repositories or research collaborations', 'Operational troubleshooting: resolving complex pipeline failures with TGB technical leads', 'Weekly technical reviews: presenting progress and defending methodology', 'Applied industrial R&D: optimisation of active workflows in the Torrington Genomics ecosystem']) } ] },
@@ -507,17 +502,20 @@ function BCNav() {
       <style>{`
         .bc-nav-links, .bc-nav-cta { display: flex; align-items: center; }
         .bc-nav-toggle { display: none; }
-        @media (max-width: 900px) {
+        @media (max-width: 1040px) {
           .bc-nav-links, .bc-nav-cta { display: none !important; }
           .bc-nav-toggle { display: flex !important; }
         }
       `}</style>
       <div style={cs('max-width:1240px; margin:0 auto; padding:14px clamp(20px,5vw,56px); display:flex; align-items:center; gap:24px; flex-wrap:wrap')}>
-        <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={cs('height:34px; width:auto; object-fit:contain')} />
+        <a href="https://torrington-gb.com/" style={cs('display:inline-flex; align-items:center')}>
+          <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={cs('height:34px; width:auto; object-fit:contain')} />
+        </a>
         <img src="assets/tsi-lockup-30.png" alt="Torrington Scholars Institute" style={cs('height:30px; width:auto; object-fit:contain')} />
         <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:' + BC_DIM + '; padding:5px 11px; border:1px solid ' + BC_LINE + '; border-radius:999px')}>Bio-Coder</span>
         <div style={{ flex: 1 }} />
         <div className="bc-nav-links" style={{ gap: 22, flexWrap: 'wrap' }}>
+          <a href="https://torrington-gb.com/" style={cs('font-size:13px; color:' + BC_INK2)}>Main site</a>
           {items.map(([label, id]) => (
             <span key={id} onClick={() => goTo(id)} style={cs('font-size:13px; cursor:pointer; color:' + BC_INK2)}>{label}</span>
           ))}
@@ -538,6 +536,7 @@ function BCNav() {
       </div>
       {open &&
       <div style={cs('border-top:1px solid ' + BC_LINE + '; padding:10px clamp(20px,5vw,56px) 22px; display:flex; flex-direction:column; gap:2px; background:' + BC_PAPER)}>
+        <a href="https://torrington-gb.com/" style={cs('padding:13px 4px; border-bottom:1px solid ' + BC_LINE + '; font-size:15px; color:' + BC_INK + '; font-weight:500')}>Main site</a>
         {items.map(([label, id]) => (
           <span key={id} onClick={() => goTo(id)} style={cs('padding:13px 4px; border-bottom:1px solid ' + BC_LINE + '; font-size:15px; color:' + BC_INK + '; font-weight:500; cursor:pointer')}>{label}</span>
         ))}
@@ -1312,7 +1311,9 @@ function BCFooter() {
       <div style={cs('position:relative; max-width:1240px; margin:0 auto; padding:clamp(48px,7vw,90px) clamp(20px,5vw,56px)')}>
         <div style={cs('display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(28px,4vw,56px)')}>
           <div style={{ minWidth: 0 }}>
-            <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={{ height: 36, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+            <a href="https://torrington-gb.com/" style={{ display: 'inline-block' }}>
+              <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={{ height: 36, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
+            </a>
             <img src="assets/tsi-lockup-28.png" alt="Torrington Scholars Institute" style={{ height: 28, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', marginTop: 18, display: 'block' }} />
             <p style={cs('margin:22px 0 0; max-width:40ch; font-size:13.5px; line-height:1.65; color:rgba(255,255,255,0.70)')}>Torrington Genomics &amp; Bioinformatics (Pvt) Ltd · Orion Towers, Colombo. The Torrington Scholars Institute is our teaching subsidiary.</p>
           </div>
