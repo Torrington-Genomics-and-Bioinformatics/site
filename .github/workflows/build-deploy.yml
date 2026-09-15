@@ -30,13 +30,15 @@ jobs:
         with:
           branch: deploy
           folder: dist
-      
 
-
-
-
-        
-
-      
-  
-        
+      - name: Deploy straight to cPanel over SSH
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: torrington-gb.com
+          port: 9750
+          username: torringt
+          key: ${{ secrets.DEPLOY_SSH_KEY }}
+          source: "dist/*,dist/.[!.]*"
+          target: "/home/torringt/public_html/"
+          strip_components: 1
+          overwrite: true
