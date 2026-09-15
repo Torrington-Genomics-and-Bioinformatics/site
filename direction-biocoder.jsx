@@ -499,8 +499,7 @@ function BCNav() {
       `}</style>
       <div style={cs('max-width:1240px; margin:0 auto; padding:14px clamp(20px,5vw,56px); display:flex; align-items:center; gap:24px; flex-wrap:wrap')}>
         <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={cs('height:34px; width:auto; object-fit:contain')} />
-        <img src="assets/tsi-mark-40.png" alt="" style={cs('height:26px; width:auto; object-fit:contain')} />
-        <span style={cs('font-family:Newsreader,serif; font-style:italic; font-size:15px; color:' + BC_INK2)}>Scholars Institute</span>
+        <img src="assets/tsi-lockup-30.png" alt="Torrington Scholars Institute" style={cs('height:30px; width:auto; object-fit:contain')} />
         <span style={cs('font-family:"JetBrains Mono",monospace; font-size:9.5px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:' + BC_DIM + '; padding:5px 11px; border:1px solid ' + BC_LINE + '; border-radius:999px')}>Bio-Coder</span>
         <div style={{ flex: 1 }} />
         <div className="bc-nav-links" style={{ gap: 22, flexWrap: 'wrap' }}>
@@ -605,8 +604,7 @@ function BCNote() {
           <div style={cs('padding:clamp(28px,4vw,48px) clamp(24px,4vw,44px); max-height:88vh; overflow:auto')}>
             <div style={cs('display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:20px; padding-bottom:12px; border-bottom:1px solid rgba(15,26,36,0.08)')}>
               <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={cs('height:32px; width:auto; display:block')} />
-              <img src="assets/tsi-mark-68.png" alt="" style={cs('height:44px; width:auto; display:block')} />
-              <span style={cs('font-family:Newsreader,serif; font-style:italic; font-size:18px; color:' + BC_INK2)}>Scholars Institute</span>
+              <img src="assets/tsi-lockup-44.png" alt="Torrington Scholars Institute" style={cs('height:44px; width:auto; display:block')} />
             </div>
             <div style={cs('display:flex; align-items:baseline; justify-content:space-between; gap:24px; font-family:"JetBrains Mono",monospace; font-size:9.5px; letter-spacing:0.14em; text-transform:uppercase; color:' + BC_DIM)}>
               <span>To students, postgraduates &amp; colleagues in Sri Lankan life sciences</span>
@@ -904,6 +902,9 @@ function BCAccess() {
     <section id="access" style={cs('max-width:1240px; margin:0 auto; padding:clamp(28px,4vw,52px) clamp(20px,5vw,56px) clamp(48px,7vw,100px); border-top:1px solid ' + BC_LINE)}>
       <style>{`
         .bc-access-tile:hover { background: ${BC_PAPER2} !important; }
+        .bc-access-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: ${BC_LINE}; border: 1px solid ${BC_LINE}; border-radius: 16px; overflow: hidden; }
+        @media (max-width: 920px) { .bc-access-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 480px) { .bc-access-grid { grid-template-columns: 1fr; } }
       `}</style>
       <div style={cs('display:flex; align-items:center; gap:10px; margin-bottom:26px')}>
         <span style={{ width: 24, height: 1, background: BC_GRAD }} />
@@ -912,7 +913,7 @@ function BCAccess() {
       <h2 style={cs('margin:0 0 34px; max-width:26ch; font-family:Newsreader,serif; font-weight:300; font-size:clamp(32px,4.6vw,58px); line-height:1.04; letter-spacing:-2.2px; color:' + BC_INK)}>
         Become practising scientists, <em style={{ fontStyle: 'italic', background: BC_GRAD, WebkitBackgroundClip: 'text', backgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>not observers</em>
       </h2>
-      <div style={cs('display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1px; background:' + BC_LINE + '; border:1px solid ' + BC_LINE + '; border-radius:16px; overflow:hidden')}>
+      <div className="bc-access-grid">
         {ACCESS.map((a) => (
           <div key={a.n} className="bc-access-tile" style={cs('background:' + BC_PAPER + '; padding:clamp(22px,2.6vw,30px); display:flex; flex-direction:column; gap:12px; min-width:0; transition:background 0.15s ease')}>
             <div style={cs('width:100%; height:150px; border-radius:10px; background:' + BC_PAPER2 + '; border:1px solid ' + BC_LINE + '; display:flex; flex-direction:column; justify-content:center; padding:16px 18px; box-sizing:border-box')}>
@@ -1275,10 +1276,7 @@ function BCFooter() {
         <div style={cs('display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:clamp(28px,4vw,56px)')}>
           <div style={{ minWidth: 0 }}>
             <img src="assets/TGB-logo-trimmed.png" alt="Torrington Genomics & Bioinformatics" style={{ height: 36, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-            <div style={{ display: 'flex', alignItems: 'center', gap: 10, marginTop: 18 }}>
-              <img src="assets/tsi-mark-40.png" alt="" style={{ height: 22, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)' }} />
-              <span style={cs('font-family:Newsreader,serif; font-style:italic; font-size:17px; color:rgba(255,255,255,0.85)')}>Torrington Scholars Institute</span>
-            </div>
+            <img src="assets/tsi-lockup-28.png" alt="Torrington Scholars Institute" style={{ height: 28, width: 'auto', objectFit: 'contain', filter: 'brightness(0) invert(1)', marginTop: 18, display: 'block' }} />
             <p style={cs('margin:22px 0 0; max-width:40ch; font-size:13.5px; line-height:1.65; color:rgba(255,255,255,0.70)')}>Torrington Genomics &amp; Bioinformatics (Pvt) Ltd · Orion Towers, Colombo. The Torrington Scholars Institute is our teaching subsidiary.</p>
           </div>
           <div style={{ minWidth: 0 }}>
