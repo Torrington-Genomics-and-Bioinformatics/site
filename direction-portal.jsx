@@ -208,6 +208,7 @@ const CSS = `
 .tp-bulk { background:var(--forest); color:#e8f1ef; border-radius:14px; padding:22px 24px; display:grid; grid-template-columns:1fr auto; gap:20px; align-items:center; margin-bottom:28px; }
 .tp-bulk b { color:#fff; font-weight:600; }
 .tp-bulk p { margin:4px 0 0; font-size:13.5px; line-height:1.55; color:rgba(232,241,239,0.75); }
+.tp-bulk .tp-link-light { color:#7fd3e6; font-size:inherit; text-decoration:underline; text-underline-offset:2px; }
 .tp-bulk code { font-family:'JetBrains Mono',monospace; font-size:12.5px; background:rgba(255,255,255,0.08); padding:2px 6px; border-radius:5px; color:#bfe9f2; }
 .tp-btn-light { background:#fff; color:var(--forest); }
 .tp-btn-light:hover:not(:disabled) { background:#e8f6f9; }
@@ -616,6 +617,22 @@ function OrderDetail({ inst, order }) {
       {!data && !err && <div className="tp-loading">Loading files…</div>}
       {data && (
         <>
+          {data.archive ? (
+            <div className="tp-bulk">
+              <div>
+                <b>Download the entire order</b>
+                <p>Everything in this order as one {(data.archive.path.match(/\.(zip|tar\.gz|tgz|tar)$/i) || ['', 'archive'])[1].toUpperCase()} file ({fmtBytes(data.archive.bytes)}). If your connection drops, you can resume it from your browser's downloads list.</p>
+                <p style={{ marginTop: 10 }}>
+                  On Mac or Linux you can also use the{' '}
+                  <button className="tp-link tp-link-light" onClick={script} disabled={busy === '*script'}>{busy === '*script' ? 'preparing script…' : 'download script'}</button>
+                  , which fetches the files separately and checks their md5 checksums.
+                </p>
+              </div>
+              <button className="tp-btn tp-btn-light" onClick={() => download(data.archive.path)} disabled={busy === data.archive.path}>
+                {busy === data.archive.path ? 'Starting…' : `Download all · ${fmtBytes(data.archive.bytes)}`}
+              </button>
+            </div>
+          ) : (
           <div className="tp-bulk">
             <div>
               <b>Download the whole order</b>
@@ -625,6 +642,7 @@ function OrderDetail({ inst, order }) {
               {busy === '*script' ? 'Preparing…' : 'Get download script'}
             </button>
           </div>
+          )}
           {groups.map((g) => (
             <section className="tp-group" key={g.name}>
               <div className="tp-group-h">
