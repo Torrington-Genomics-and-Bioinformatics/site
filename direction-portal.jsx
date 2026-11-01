@@ -268,8 +268,8 @@ function AuthShell({ children }) {
           <h1 className="tp-serif">Your results, <em>delivered securely.</em></h1>
           <ul className="tp-points">
             <li><span>01</span>Only your institution's orders are visible to your account.</li>
-            <li><span>02</span>Every download link is created for you on request and expires within the hour.</li>
-            <li><span>03</span>Files stay available for 30 days after delivery. Please keep your own copy.</li>
+            <li><span>02</span>Sign in any time within 30 days of delivery and download your files as often as you need.</li>
+            <li><span>03</span>Your files are never public. They are removed after 30 days, so please keep your own copy.</li>
           </ul>
         </div>
         <a className="tp-back" href="/">← Back to torrington-gb.com</a>
@@ -551,7 +551,7 @@ function OrderDetail({ inst, order }) {
           <div className="tp-bulk">
             <div>
               <b>Download the whole order</b>
-              <p>For large orders, get a script that downloads every file, resumes if your connection drops, and checks the md5 checksums. Run it with <code>bash download-{order}.sh</code> on Mac or Linux. Its links work for 24 hours.</p>
+              <p>For large orders, get a script that downloads every file, resumes if your connection drops, and checks the md5 checksums. Run it with <code>bash download-{order}.sh</code> on Mac or Linux. If you run it more than a day later, get a fresh copy here.</p>
             </div>
             <button className="tp-btn tp-btn-light" onClick={script} disabled={busy === '*script'}>
               {busy === '*script' ? 'Preparing…' : 'Get download script'}
@@ -586,7 +586,7 @@ function OrderDetail({ inst, order }) {
             </details>
           )}
           <p className="tp-note">
-            Each download link is created when you click and expires after an hour. If a large download is interrupted, use the download script, which can resume.
+            If a large download is interrupted, use the download script, which picks up where it stopped.
             Questions about your results? Email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a> and quote {order}.
           </p>
         </>
