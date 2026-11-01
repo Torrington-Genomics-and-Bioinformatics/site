@@ -7,6 +7,7 @@ mkdirSync(outDir, { recursive: true });
 mkdirSync(`${outDir}/assets/favicon`, { recursive: true });
 mkdirSync(`${outDir}/logos`, { recursive: true });
 mkdirSync(`${outDir}/bio-coder/assets`, { recursive: true });
+mkdirSync(`${outDir}/portal`, { recursive: true });
 
 await build({
   entryPoints: ['direction-lumen.jsx'],
@@ -26,10 +27,23 @@ await build({
   legalComments: 'none',
 });
 
+// The portal imports the Firebase Auth SDK, so it's bundled (React stays the global UMD build).
+await build({
+  entryPoints: ['direction-portal.jsx'],
+  outfile: `${outDir}/portal/bundle.js`,
+  bundle: true,
+  format: 'iife',
+  minify: true,
+  target: ['es2018'],
+  jsx: 'transform',
+  legalComments: 'none',
+});
+
 cpSync('index.html', `${outDir}/index.html`);
 cpSync('robots.txt', `${outDir}/robots.txt`);
 cpSync('sitemap.xml', `${outDir}/sitemap.xml`);
 cpSync('bio-coder-prod.html', `${outDir}/bio-coder/index.html`);
+cpSync('portal-prod.html', `${outDir}/portal/index.html`);
 // cPanel's Git Version Control deploy step needs this at the dist/ root — without it,
 // "Deploy HEAD Commit" fails with "A valid .cpanel.yml file must exist".
 cpSync('.cpanel.yml', `${outDir}/.cpanel.yml`);
