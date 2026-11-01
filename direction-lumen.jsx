@@ -1334,8 +1334,9 @@ function LumenContact() {
           </div>
         </div>
       </div>
-      <div style={{ position: 'relative', zIndex: 2, display: 'flex', justifyContent: 'space-between', alignItems: 'center', paddingTop: 32, fontSize: 12, color: 'rgba(255,255,255,0.55)', fontFamily: 'JetBrains Mono, monospace', letterSpacing: 0.3 }}>
+      <div style={{ position: 'relative', zIndex: 2, display: 'flex', flexWrap: 'wrap', gap: '12px 24px', justifyContent: 'space-between', alignItems: 'center', paddingTop: 32, fontSize: 12, color: 'rgba(255,255,255,0.55)', fontFamily: 'JetBrains Mono, monospace', letterSpacing: 0.3 }}>
         <div>© 2026 Torrington Genomics &amp; Bioinformatics (Pvt) Ltd · torrington-gb.com</div>
+        <a href="portal/" style={{ color: 'rgba(255,255,255,0.85)', textDecoration: 'none', borderBottom: '1px solid rgba(255,255,255,0.3)', paddingBottom: 1 }}>Client login →</a>
       </div>
 
       {sent &&
