@@ -114,6 +114,7 @@ async function api(path, opts = {}) {
 function useRoute() {
   const read = () => {
     const parts = window.location.hash.replace(/^#\/?/, '').split('/').filter(Boolean).map(decodeURIComponent);
+    if (parts[0] === 'accounts') return { page: 'accounts' };
     return parts.length === 2 ? { inst: parts[0], order: parts[1] } : null;
   };
   const [route, setRoute] = useState(read);
@@ -154,10 +155,10 @@ const CSS = `
 .tp-card h2 { font-size:30px; margin:8px 0 6px; }
 .tp-card p.tp-sub { color:var(--dim); font-size:14.5px; line-height:1.55; margin:0 0 28px; }
 .tp-field { display:block; margin-bottom:16px; }
-.tp-field span { display:block; font-size:13px; font-weight:500; color:var(--ink2); margin-bottom:6px; }
-.tp-field input { width:100%; height:46px; border:1px solid rgba(15,26,36,0.16); border-radius:10px; padding:0 14px;
+.tp-field > span { display:block; font-size:13px; font-weight:500; color:var(--ink2); margin-bottom:6px; }
+.tp-field input:not([type=radio]):not([type=checkbox]) { width:100%; height:46px; border:1px solid rgba(15,26,36,0.16); border-radius:10px; padding:0 14px;
   font:inherit; font-size:15px; color:var(--ink); background:#fff; outline:none; transition:border-color .15s, box-shadow .15s; }
-.tp-field input:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(61,168,200,0.16); }
+.tp-field input:not([type=radio]):not([type=checkbox]):focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(61,168,200,0.16); }
 .tp-btn { display:inline-flex; align-items:center; justify-content:center; gap:8px; height:46px; padding:0 20px; border-radius:999px;
   border:0; font:inherit; font-size:14.5px; font-weight:600; cursor:pointer; text-decoration:none; transition:transform .1s, opacity .15s, background .15s; white-space:nowrap; }
 .tp-btn:active { transform:translateY(1px); }
@@ -230,6 +231,59 @@ const CSS = `
 .tp-note { font-size:12.5px; color:var(--dim); margin-top:24px; line-height:1.6; }
 .tp-loading { padding:80px 0; text-align:center; color:var(--dim); font-size:14px; }
 
+/* staff: accounts */
+.tp-tabs { display:flex; gap:4px; }
+.tp-tabs a { font-size:14px; font-weight:500; color:var(--dim); text-decoration:none; padding:8px 12px; border-radius:8px; }
+.tp-tabs a:hover { color:var(--ink); background:var(--paper2); }
+.tp-tabs a.on { color:var(--ink); background:rgba(61,168,200,0.1); }
+.tp-btn-dark { background:var(--ink); color:#fff; height:42px; }
+.tp-btn-dark:hover:not(:disabled) { background:#1d3040; }
+.tp-btn-red { color:var(--red); border-color:rgba(181,72,59,0.3); }
+.tp-btn-red:hover:not(:disabled) { border-color:var(--red); }
+.tp-input { width:100%; height:44px; border:1px solid rgba(15,26,36,0.16); border-radius:10px; padding:0 12px; font:inherit; font-size:14.5px; color:var(--ink); background:#fff; outline:none; }
+.tp-input:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(61,168,200,0.16); }
+.tp-search { max-width:360px; margin-bottom:14px; }
+.tp-acc { background:var(--paper); border:1px solid var(--line); border-radius:14px; overflow:hidden; }
+.tp-acc-row { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(0,1.3fr) 120px 90px; gap:16px; align-items:center; width:100%;
+  padding:14px 22px; border:0; border-top:1px solid var(--line); background:none; font:inherit; color:inherit; text-align:left; cursor:pointer; }
+.tp-acc-row:hover { background:#fbfcfd; }
+.tp-acc-head { border-top:0; cursor:default; background:#fbfcfd; font-size:11.5px; font-weight:600; color:var(--dim); text-transform:uppercase; letter-spacing:0.08em; padding:11px 22px; }
+.tp-acc-who { min-width:0; }
+.tp-acc-who b { display:block; font-size:14.5px; font-weight:600; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.tp-acc-who small { display:block; font-size:12.5px; color:var(--dim); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; margin-top:2px; }
+.tp-acc-access { font-size:13.5px; color:var(--ink2); }
+.tp-acc-last { font-size:13px; color:var(--dim); }
+.tp-acc-status { justify-self:end; }
+.tp-acc-edit { font-size:13px; font-weight:600; color:var(--blue); }
+.tp-acc-off .tp-acc-who b, .tp-acc-off .tp-acc-access { color:var(--dim); }
+.tp-modal { position:fixed; inset:0; z-index:50; background:rgba(6,12,18,0.55); backdrop-filter:blur(3px); display:flex; align-items:flex-start; justify-content:center; padding:48px 16px; overflow-y:auto; }
+.tp-modal-card { position:relative; width:100%; max-width:520px; background:var(--paper); border-radius:18px; padding:32px; box-shadow:0 24px 60px rgba(6,12,18,0.25); }
+.tp-modal-x { position:absolute; top:14px; right:16px; width:34px; height:34px; border:0; background:none; font-size:24px; line-height:1; color:var(--dim); cursor:pointer; border-radius:8px; }
+.tp-modal-x:hover { background:var(--paper2); color:var(--ink); }
+.tp-seg { display:inline-flex; background:var(--paper2); border:1px solid var(--line); border-radius:10px; padding:3px; }
+.tp-seg button { border:0; background:none; font:inherit; font-size:14px; font-weight:500; color:var(--dim); padding:8px 16px; border-radius:8px; cursor:pointer; }
+.tp-seg button.on { background:#fff; color:var(--ink); box-shadow:0 1px 3px rgba(15,26,36,0.12); }
+.tp-seg button:disabled { cursor:default; }
+.tp-check { display:grid; grid-template-columns:20px 1fr; gap:10px; align-items:start; margin-bottom:18px; font-size:14px; font-weight:500; cursor:pointer; }
+.tp-check input { margin-top:3px; }
+.tp-check small { display:block; font-weight:400; font-size:12.5px; color:var(--dim); line-height:1.5; margin-top:3px; }
+.tp-choice { display:grid; gap:9px; font-size:14px; }
+.tp-choice > label { display:flex; gap:9px; align-items:flex-start; cursor:pointer; line-height:1.45; }
+.tp-choice > label input { margin-top:3px; }
+.tp-orders-pick { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; padding:12px 14px; background:var(--paper2); border-radius:10px; font-size:13px; }
+.tp-orders-pick label { display:flex; gap:8px; align-items:center; cursor:pointer; }
+.tp-orders-pick small { color:var(--dim); }
+.tp-danger { margin-top:24px; padding-top:20px; border-top:1px solid var(--line); }
+.tp-actions { display:flex; flex-wrap:wrap; gap:10px; }
+.tp-hint { display:block; font-size:12.5px; color:var(--dim); margin-top:10px; }
+.tp-cred { background:var(--paper2); border:1px solid var(--line); border-radius:14px; padding:20px; }
+.tp-cred-h { font-size:12px; font-weight:600; color:#2f6f61; margin-bottom:14px; }
+.tp-cred-row { display:grid; grid-template-columns:90px minmax(0,1fr); gap:12px; font-size:14px; padding:7px 0; border-top:1px solid var(--line); }
+.tp-cred-row span { color:var(--dim); }
+.tp-cred-row b { font-weight:600; word-break:break-all; }
+.tp-cred .tp-btn { margin-top:14px; }
+.tp-cred p { font-size:12.5px; color:var(--dim); margin:12px 0 0; }
+
 @media (max-width: 900px) {
   .tp-auth { grid-template-columns:1fr; }
   .tp-auth-side { padding:36px 24px 40px; }
@@ -255,6 +309,13 @@ const CSS = `
   .tp-file .tp-fsize { grid-column:2; grid-row:2; text-align:left; }
   .tp-file .tp-btn-dl { grid-column:3; grid-row:1 / span 2; }
   .tp-group-h { padding:12px 16px; }
+  .tp-tabs a { padding:8px 10px; }
+  .tp-acc-head { display:none; }
+  .tp-acc-row { grid-template-columns:minmax(0,1fr) auto; gap:4px 12px; padding:14px 16px; }
+  .tp-acc-access, .tp-acc-last { grid-column:1; font-size:12.5px; }
+  .tp-acc-status { grid-column:2; grid-row:1; }
+  .tp-modal { padding:16px 10px; }
+  .tp-modal-card { padding:24px 18px; }
 }
 `;
 
@@ -408,13 +469,20 @@ function SetPassword({ code, onDone }) {
 }
 
 // ---- signed-in screens ----
-function TopBar({ user }) {
+function TopBar({ user, me, route }) {
   return (
     <header className="tp-top">
       <div className="tp-top-in">
         <a href="/"><img className="tp-logo" src="../assets/TGB-logo-trimmed.png" alt="Torrington Genomics &amp; Bioinformatics" /></a>
         <div className="tp-top-div" />
-        <a href="#/" className="tp-top-title" style={{ textDecoration: 'none' }}>Results portal</a>
+        {me && me.admin ? (
+          <nav className="tp-tabs">
+            <a href="#/" className={!route || !route.page ? 'on' : ''}>Results</a>
+            <a href="#/accounts" className={route && route.page === 'accounts' ? 'on' : ''}>Accounts</a>
+          </nav>
+        ) : (
+          <a href="#/" className="tp-top-title" style={{ textDecoration: 'none' }}>Results portal</a>
+        )}
         <div className="tp-top-right">
           <span className="tp-top-email">{user.email}</span>
           <button className="tp-btn tp-btn-ghost" onClick={() => { window.location.hash = ''; signOut(auth); }}>Sign out</button>
@@ -595,6 +663,299 @@ function OrderDetail({ inst, order }) {
   );
 }
 
+// ---- staff: account management ----
+const loginText = (email, password) =>
+  `Your Torrington Genomics & Bioinformatics results portal account\n\n` +
+  `Sign in at: https://torrington-gb.com/portal/\nEmail: ${email}\nPassword: ${password}\n\n` +
+  `You can choose your own password any time with "Forgot password?" on the sign-in page.`;
+
+function accessLabel(u) {
+  if (u.role === 'staff') return u.admin ? 'Staff · admin' : 'Staff · all institutions';
+  if (!u.inst) return 'No access';
+  return `${[].concat(u.inst).join(', ')}${u.orders ? ` · ${u.orders.join(', ')}` : ' · all orders'}`;
+}
+
+function Credentials({ email, password }) {
+  const [copied, setCopied] = useState(false);
+  const copy = () => {
+    navigator.clipboard.writeText(loginText(email, password)).then(() => {
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    });
+  };
+  return (
+    <div className="tp-cred">
+      <div className="tp-cred-h">Login details: send these to the account holder</div>
+      <div className="tp-cred-row"><span>Sign in at</span><b>torrington-gb.com/portal/</b></div>
+      <div className="tp-cred-row"><span>Email</span><b>{email}</b></div>
+      <div className="tp-cred-row"><span>Password</span><b className="tp-mono">{password}</b></div>
+      <button type="button" className="tp-btn tp-btn-dark" onClick={copy}>{copied ? 'Copied ✓' : 'Copy login details'}</button>
+      <p>This password is shown only once. If it's lost, set a new one.</p>
+    </div>
+  );
+}
+
+function AccountEditor({ account, me, institutions, onClose, onSaved, onDeleted }) {
+  const isNew = !account;
+  const self = account && account.email === me.email;
+  const [f, setF] = useState(() => ({
+    email: '',
+    name: account ? account.name : '',
+    role: account ? account.role : 'client',
+    admin: account ? account.admin : false,
+    inst: account && account.inst ? [].concat(account.inst)[0] : '',
+    newInst: '',
+    limit: !!(account && account.orders),
+    orders: (account && account.orders) || [],
+    pwMode: 'generate',
+    password: '',
+  }));
+  const [busy, setBusy] = useState('');
+  const [err, setErr] = useState('');
+  const [cred, setCred] = useState(null);
+  const [pwOpen, setPwOpen] = useState(false);
+  const set = (k) => (e) => setF({ ...f, [k]: e && e.target ? (e.target.type === 'checkbox' ? e.target.checked : e.target.value) : e });
+
+  const instName = f.inst === '__new' ? f.newInst.trim() : f.inst;
+  const instOrders = (institutions.find((i) => i.inst === instName) || {}).orders || [];
+  const toggleOrder = (o) => setF({ ...f, orders: f.orders.includes(o) ? f.orders.filter((x) => x !== o) : [...f.orders, o] });
+
+  const body = () => ({
+    name: f.name,
+    role: f.role,
+    admin: f.role === 'staff' && f.admin,
+    inst: f.role === 'client' ? instName : undefined,
+    orders: f.role === 'client' && f.limit ? f.orders : [],
+  });
+
+  const run = async (label, fn) => {
+    setBusy(label); setErr('');
+    try { await fn(); } catch (e) { setErr(e.message); } finally { setBusy(''); }
+  };
+
+  const save = (e) => {
+    e.preventDefault();
+    if (f.role === 'client' && !instName) return setErr('Choose the institution folder this account can see.');
+    if (f.role === 'client' && f.limit && !f.orders.length) return setErr('Tick at least one order, or choose "All orders".');
+    run('save', async () => {
+      if (isNew) {
+        const r = await (await api('/api/admin/users', { method: 'POST', body: JSON.stringify({ ...body(), email: f.email, password: f.pwMode === 'own' ? f.password : '' }) })).json();
+        setCred({ email: r.user.email, password: r.password });
+        onSaved(r.user, true);
+      } else {
+        const r = await (await api(`/api/admin/users/${account.uid}`, { method: 'PATCH', body: JSON.stringify(body()) })).json();
+        onSaved(r.user);
+        onClose();
+      }
+    });
+  };
+
+  const newPassword = () => run('pw', async () => {
+    const r = await (await api(`/api/admin/users/${account.uid}/password`, { method: 'POST', body: JSON.stringify({ password: f.pwMode === 'own' ? f.password : '' }) })).json();
+    setCred({ email: r.user.email, password: r.password });
+    setPwOpen(false);
+  });
+
+  const toggleDisabled = () => run('disable', async () => {
+    const r = await (await api(`/api/admin/users/${account.uid}`, { method: 'PATCH', body: JSON.stringify({ disabled: !account.disabled }) })).json();
+    onSaved(r.user);
+    onClose();
+  });
+
+  const remove = () => {
+    if (!window.confirm(`Delete the account for ${account.email}? They will no longer be able to sign in. Their files in the bucket are not affected.`)) return;
+    run('delete', async () => {
+      await api(`/api/admin/users/${account.uid}`, { method: 'DELETE' });
+      onDeleted(account.uid);
+      onClose();
+    });
+  };
+
+  const passwordChoice = () => (
+    <div className="tp-choice">
+      <label><input type="radio" checked={f.pwMode === 'generate'} onChange={() => setF({ ...f, pwMode: 'generate' })} /> Generate a password</label>
+      <label><input type="radio" checked={f.pwMode === 'own'} onChange={() => setF({ ...f, pwMode: 'own' })} /> Set one myself</label>
+      {f.pwMode === 'own' && (
+        <input className="tp-input" type="text" autoComplete="off" placeholder={`At least ${MIN_PASSWORD} characters`} value={f.password} onChange={set('password')} />
+      )}
+    </div>
+  );
+
+  return (
+    <div className="tp-modal" onMouseDown={(e) => { if (e.target === e.currentTarget && !busy) onClose(); }}>
+      <div className="tp-modal-card">
+        <button className="tp-modal-x" onClick={onClose} aria-label="Close">×</button>
+        <div className="tp-kicker">{isNew ? 'New account' : 'Edit account'}</div>
+        <h2 className="tp-serif" style={{ fontSize: 26, margin: '6px 0 20px', wordBreak: 'break-word' }}>{isNew ? 'Create an account' : account.email}</h2>
+        {err && <div className="tp-msg tp-msg-err">{err}</div>}
+
+        {cred ? (
+          <>
+            <Credentials {...cred} />
+            <button className="tp-btn tp-btn-ghost" style={{ marginTop: 16 }} onClick={onClose}>Done</button>
+          </>
+        ) : (
+          <form onSubmit={save} noValidate>
+            {isNew && (
+              <label className="tp-field"><span>Email</span>
+                <input type="email" autoComplete="off" value={f.email} onChange={set('email')} placeholder="name@institution.lk" />
+              </label>
+            )}
+            <label className="tp-field"><span>Name (optional)</span>
+              <input type="text" autoComplete="off" value={f.name} onChange={set('name')} placeholder="Dr A. Perera" />
+            </label>
+
+            <div className="tp-field"><span>Account type</span>
+              <div className="tp-seg">
+                <button type="button" className={f.role === 'client' ? 'on' : ''} disabled={self} onClick={() => setF({ ...f, role: 'client' })}>Client</button>
+                <button type="button" className={f.role === 'staff' ? 'on' : ''} onClick={() => setF({ ...f, role: 'staff' })}>TGB staff</button>
+              </div>
+            </div>
+
+            {f.role === 'staff' ? (
+              <label className="tp-check">
+                <input type="checkbox" checked={f.admin} disabled={self} onChange={set('admin')} />
+                <span>Can manage accounts <small>Staff always see every institution's results. Admins can also create and change accounts here.</small></span>
+              </label>
+            ) : (
+              <>
+                <label className="tp-field"><span>Institution</span>
+                  <select className="tp-input" value={f.inst} onChange={(e) => setF({ ...f, inst: e.target.value, orders: [] })}>
+                    <option value="">Choose a folder…</option>
+                    {institutions.map((i) => <option key={i.inst} value={i.inst}>{i.inst} ({i.orders.length} order{i.orders.length === 1 ? '' : 's'})</option>)}
+                    <option value="__new">New institution (no deliveries yet)…</option>
+                  </select>
+                </label>
+                {f.inst === '__new' && (
+                  <label className="tp-field"><span>Folder name, exactly as your pipeline will write it</span>
+                    <input type="text" className="tp-mono" value={f.newInst} onChange={set('newInst')} placeholder="e.g. UoC-FoM" />
+                  </label>
+                )}
+                {instName && (
+                  <div className="tp-field"><span>Orders</span>
+                    <div className="tp-choice">
+                      <label><input type="radio" checked={!f.limit} onChange={() => setF({ ...f, limit: false })} /> All orders for this institution, including future ones</label>
+                      <label><input type="radio" checked={f.limit} onChange={() => setF({ ...f, limit: true })} /> Only selected orders</label>
+                      {f.limit && (
+                        <div className="tp-orders-pick">
+                          {instOrders.length === 0 && <small>No orders delivered for this institution yet.</small>}
+                          {instOrders.map((o) => (
+                            <label key={o}><input type="checkbox" checked={f.orders.includes(o)} onChange={() => toggleOrder(o)} /> <span className="tp-mono">{o}</span></label>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
+              </>
+            )}
+
+            {isNew && <div className="tp-field"><span>Password</span>{passwordChoice()}</div>}
+
+            <button className="tp-btn tp-btn-primary" style={{ marginTop: 8 }} disabled={!!busy}>
+              {busy === 'save' ? 'Saving…' : isNew ? 'Create account' : 'Save changes'}
+            </button>
+
+            {!isNew && (
+              <div className="tp-danger">
+                {pwOpen ? (
+                  <div className="tp-field" style={{ marginBottom: 0 }}><span>New password</span>
+                    {passwordChoice()}
+                    <div style={{ display: 'flex', gap: 10, marginTop: 12 }}>
+                      <button type="button" className="tp-btn tp-btn-dark" onClick={newPassword} disabled={!!busy}>{busy === 'pw' ? 'Saving…' : 'Set password'}</button>
+                      <button type="button" className="tp-btn tp-btn-ghost" onClick={() => setPwOpen(false)}>Cancel</button>
+                    </div>
+                    <small className="tp-hint">{self ? 'You stay signed in here.' : 'They will be signed out everywhere and need the new password.'}</small>
+                  </div>
+                ) : (
+                  <div className="tp-actions">
+                    <button type="button" className="tp-btn tp-btn-ghost" onClick={() => setPwOpen(true)}>Set new password</button>
+                    {!self && (
+                      <button type="button" className="tp-btn tp-btn-ghost" onClick={toggleDisabled} disabled={!!busy}>
+                        {busy === 'disable' ? 'Saving…' : account.disabled ? 'Enable account' : 'Disable account'}
+                      </button>
+                    )}
+                    {!self && <button type="button" className="tp-btn tp-btn-ghost tp-btn-red" onClick={remove} disabled={!!busy}>{busy === 'delete' ? 'Deleting…' : 'Delete'}</button>}
+                  </div>
+                )}
+              </div>
+            )}
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
+function Accounts({ me }) {
+  const [users, setUsers] = useState(null);
+  const [institutions, setInstitutions] = useState([]);
+  const [err, setErr] = useState('');
+  const [q, setQ] = useState('');
+  const [editing, setEditing] = useState(null); // account object, 'new', or null
+
+  useEffect(() => {
+    api('/api/admin/users').then((r) => r.json()).then((d) => setUsers(d.users)).catch((e) => setErr(e.message));
+    api('/api/admin/institutions').then((r) => r.json()).then((d) => setInstitutions(d.institutions)).catch(() => {});
+  }, []);
+
+  const saved = (u, isNew) => {
+    setUsers((list) => {
+      const rest = (list || []).filter((x) => x.uid !== u.uid);
+      return [...rest, u].sort((a, b) => a.email.localeCompare(b.email));
+    });
+  };
+
+  const ql = q.trim().toLowerCase();
+  const shown = (users || []).filter((u) => !ql || [u.email, u.name, accessLabel(u)].join(' ').toLowerCase().includes(ql));
+
+  return (
+    <>
+      <div className="tp-ohead" style={{ alignItems: 'flex-end' }}>
+        <div>
+          <div className="tp-kicker">Staff</div>
+          <h1 className="tp-serif">Accounts</h1>
+          <p className="tp-lead" style={{ margin: 0 }}>Create logins for clients, choose which institution and orders they can see, and reset passwords.</p>
+        </div>
+        <button className="tp-btn tp-btn-dark" onClick={() => setEditing('new')}>+ New account</button>
+      </div>
+      {err && <div className="tp-msg tp-msg-err">{err}</div>}
+      {!users && !err && <div className="tp-loading">Loading accounts…</div>}
+      {users && (
+        <>
+          <input className="tp-input tp-search" type="search" placeholder="Search by email, name or institution" value={q} onChange={(e) => setQ(e.target.value)} />
+          <div className="tp-acc">
+            <div className="tp-acc-row tp-acc-head"><span>Account</span><span>Access</span><span>Last sign-in</span><span /></div>
+            {shown.map((u) => (
+              <button key={u.uid} className={`tp-acc-row${u.disabled ? ' tp-acc-off' : ''}`} onClick={() => setEditing(u)}>
+                <span className="tp-acc-who">
+                  <b>{u.name || u.email}</b>
+                  {u.name && <small>{u.email}</small>}
+                </span>
+                <span className="tp-acc-access">{accessLabel(u)}</span>
+                <span className="tp-acc-last">{u.lastSignIn ? fmtDate(new Date(u.lastSignIn).toISOString()) : 'Never'}</span>
+                <span className="tp-acc-status">{u.disabled ? <span className="tp-pill tp-pill-gone">Disabled</span> : <span className="tp-acc-edit">Edit →</span>}</span>
+              </button>
+            ))}
+            {shown.length === 0 && <div className="tp-empty" style={{ border: 0 }}>No accounts match.</div>}
+          </div>
+        </>
+      )}
+      {editing && (
+        <AccountEditor
+          key={editing === 'new' ? 'new' : editing.uid}
+          account={editing === 'new' ? null : editing}
+          me={me}
+          institutions={institutions}
+          onClose={() => setEditing(null)}
+          onSaved={saved}
+          onDeleted={(uid) => setUsers((list) => list.filter((x) => x.uid !== uid))}
+        />
+      )}
+    </>
+  );
+}
+
 function Dashboard({ user }) {
   const route = useRoute();
   const [me, setMe] = useState(null);
@@ -605,12 +966,14 @@ function Dashboard({ user }) {
 
   return (
     <>
-      <TopBar user={user} />
+      <TopBar user={user} me={me} route={route} />
       <main className="tp-main">
         {err ? (
           <div className="tp-empty">{err}<br />If you think this is a mistake, email <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>.</div>
         ) : !me ? (
           <div className="tp-loading">Loading…</div>
+        ) : route && route.page === 'accounts' ? (
+          me.admin ? <Accounts me={me} /> : <Orders me={me} />
         ) : route ? (
           <OrderDetail inst={route.inst} order={route.order} />
         ) : (
