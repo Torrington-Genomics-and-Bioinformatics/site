@@ -619,7 +619,7 @@ function OrderDetail({ inst, order }) {
           <div className="tp-bulk">
             <div>
               <b>Download the whole order</b>
-              <p>For large orders, get a script that downloads every file, resumes if your connection drops, and checks the md5 checksums. Run it with <code>bash download-{order}.sh</code> on Mac or Linux. If you run it more than a day later, get a fresh copy here.</p>
+              <p>For large orders, get a script that downloads every file, resumes if your connection drops, and checks the md5 checksums. Run it with <code>bash download-{order}.sh</code> on Mac or Linux. Its links work for 7 days. If it stops part-way, run it again and it carries on where it left off.</p>
             </div>
             <button className="tp-btn tp-btn-light" onClick={script} disabled={busy === '*script'}>
               {busy === '*script' ? 'Preparing…' : 'Get download script'}
